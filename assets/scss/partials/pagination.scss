@@ -1,21 +1,68 @@
+/*
+*   Pagination - v0 inspired style
+*/
 .pagination {
     display: flex;
-    background-color: var(--card-background);
-    box-shadow: var(--shadow-l1);
-    border-radius: var(--card-border-radius);
-    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 48px;  /* v0-style generous spacing */
     flex-wrap: wrap;
 
-    .page-link {
-        padding: 16px 32px;
-        display: inline-flex;
+    .page-item {
+        .page-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 40px;
+            height: 40px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--card-text-color-secondary);
+            background-color: transparent;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid transparent;
 
-        &.current {
-            font-weight: bold;
-            background-color: var(--card-background-selected);
-            color: var(--card-text-color-main);
+            &:hover {
+                color: var(--accent-color);
+                background-color: rgba(var(--accent-color-rgb), 0.1);
+                border-color: rgba(var(--accent-color-rgb), 0.2);
+            }
         }
 
-        color: var(--card-text-color-secondary);
+        /* Current/active page */
+        &.active .page-link,
+        .page-link.current {
+            background-color: var(--accent-color);
+            color: var(--accent-color-text);
+            font-weight: 600;
+            border-color: var(--accent-color);
+
+            &:hover {
+                background-color: var(--accent-color-darker);
+                border-color: var(--accent-color-darker);
+            }
+        }
+
+        /* Disabled state */
+        &.disabled .page-link {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* Previous/Next arrows */
+        &.page-item-prev,
+        &.page-item-next {
+            .page-link {
+                svg {
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+        }
     }
 }
