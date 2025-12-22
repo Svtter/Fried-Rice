@@ -33,18 +33,28 @@
 
         {{/* Article details */}}
         <div class="article-details">
-            {{/* Category pill - v0 style */}}
+            {{/* Category pills - v0 style */}}
             {{ $categories := .Params.categories }}
             {{ if $categories }}
                 {{ if reflect.IsSlice $categories }}
             <div class="article-category">
-                    {{ range first 1 $categories }}
+                    {{ range $categories }}
+                        {{ $categoryPage := $.Site.GetPage (printf "/categories/%s" (. | urlize)) }}
+                        {{ if $categoryPage }}
+                <a href="{{ $categoryPage.RelPermalink }}">{{ $categoryPage.Title }}</a>
+                        {{ else }}
                 <a href="{{ "categories/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a>
+                        {{ end }}
                     {{ end }}
             </div>
                 {{ else }}
+                    {{ $categoryPage := $.Site.GetPage (printf "/categories/%s" ($categories | urlize)) }}
             <div class="article-category">
+                    {{ if $categoryPage }}
+                <a href="{{ $categoryPage.RelPermalink }}">{{ $categoryPage.Title }}</a>
+                    {{ else }}
                 <a href="{{ "categories/" | relLangURL }}{{ $categories | urlize }}/">{{ $categories }}</a>
+                    {{ end }}
             </div>
                 {{ end }}
             {{ end }}

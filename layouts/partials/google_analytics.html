@@ -1,10 +1,6 @@
 {{ $gaID := "" }}
 {{ with .Site.Config.Services.GoogleAnalytics.ID }}
   {{ $gaID = . }}
-{{ else }}
-  {{ with .Site.Config.GoogleAnalytics }}
-    {{ $gaID = . }}
-  {{ end }}
 {{ end }}
 
 {{ if and $gaID (not .Site.Config.Privacy.GoogleAnalytics.Disable) }}
