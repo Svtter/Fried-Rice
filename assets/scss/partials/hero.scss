@@ -72,7 +72,7 @@
         display: inline-flex;
         align-items: center;
         padding: 10px 20px;
-        background-color: #E8DCC8;  /* Light beige like goal.png */
+        background-color: var(--card-background-selected);
         color: var(--accent-color);
         border: 1.5px solid var(--accent-color);
         border-radius: 9999px;  /* rounded-full */
@@ -82,7 +82,7 @@
         cursor: default;
 
         &:hover {
-            background-color: #DDD0BA;
+            background-color: var(--card-background);
             border-color: var(--accent-color-darker);
             transform: translateY(-2px);
         }
