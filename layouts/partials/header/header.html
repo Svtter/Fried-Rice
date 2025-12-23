@@ -80,8 +80,8 @@
             {{- end -}}
 
             {{/* Social links in mobile menu */}}
-            {{- with .Site.Menus.social -}}
-                <div class="mobile-social">
+            <div class="mobile-social">
+                {{- with .Site.Menus.social -}}
                     {{- range . -}}
                         <a href="{{ .URL | safeURL }}"
                            target="_blank"
@@ -92,8 +92,18 @@
                             <span>{{ .Name }}</span>
                         </a>
                     {{- end -}}
-                </div>
-            {{- end -}}
+                {{- end -}}
+                {{/* RSS link in mobile menu */}}
+                <a href="{{ "index.xml" | relLangURL }}"
+                   target="_blank"
+                   rel="alternate"
+                   type="application/rss+xml"
+                   title="RSS"
+                   class="mobile-social-link">
+                    {{ partial "helper/icon" "rss" }}
+                    <span>RSS</span>
+                </a>
+            </div>
         </div>
     </nav>
 </header>

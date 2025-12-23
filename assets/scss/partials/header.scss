@@ -142,6 +142,15 @@
             }
         }
 
+        /* Hide RSS link on mobile to prevent overlap */
+        .rss-link {
+            display: none;
+
+            @include respond(md) {
+                display: flex;
+            }
+        }
+
         /* Theme toggle button */
         .theme-toggle {
             background: transparent;
