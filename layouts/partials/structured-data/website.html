@@ -1,0 +1,44 @@
+{{- $siteName := .Site.Title -}}
+{{- $siteDescription := .Site.Params.description | default .Site.Params.subtitle -}}
+{{- $siteURL := .Site.BaseURL | absURL -}}
+{{- $searchActionURL := "" -}}
+
+{{- with .Site.Params.search -}}
+    {{- if .enabled -}}
+        {{- $searchPath := .path | default "search/" -}}
+        {{- $searchActionURL = printf "%s%s" $siteURL $searchPath -}}
+    {{- end -}}
+{{- end -}}
+
+{{- /* Get potential action URL from search widget */ -}}
+{{- if not $searchActionURL -}}
+    {{- range .Site.Params.widgets.homepage -}}
+        {{- if eq .type "search" -}}
+            {{- $searchActionURL = printf "%ssearch/" $siteURL -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+{{- /* Build the schema object */ -}}
+{{- $schema := dict "@context" "https://schema.org" "@type" "WebSite" "url" $siteURL "name" $siteName -}}
+
+{{- with $siteDescription -}}
+    {{- $schema = merge $schema (dict "description" .) -}}
+{{- end -}}
+
+{{- with .Site.Params.logo -}}
+    {{- $schema = merge $schema (dict "logo" (. | absURL)) -}}
+{{- end -}}
+
+{{- with .Site.Language.Lang -}}
+    {{- $schema = merge $schema (dict "inLanguage" .) -}}
+{{- end -}}
+
+{{- with $searchActionURL -}}
+    {{- $potentialAction := dict "@type" "SearchAction" "target" (dict "@type" "EntryPoint" "urlTemplate" (printf "%s?q={search_term_string}" .)) "query-input" "required name=search_term_string" -}}
+    {{- $schema = merge $schema (dict "potentialAction" $potentialAction) -}}
+{{- end -}}
+
+<script type="application/ld+json">
+{{ $schema | jsonify (dict "indent" "    ") | safeJS }}
+</script>

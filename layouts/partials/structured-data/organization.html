@@ -1,0 +1,109 @@
+{{- $orgName := .Site.Title -}}
+{{- $orgURL := .Site.BaseURL | absURL -}}
+{{- $orgLogo := "" -}}
+{{- $orgDescription := .Site.Params.description | default .Site.Params.subtitle -}}
+
+{{- with .Site.Params.logo -}}
+    {{- $orgLogo = . | absURL -}}
+{{- else -}}
+    {{- $orgLogo = "/img/avatar.png" | absURL -}}
+{{- end -}}
+
+{{- /* Build sameAs array */ -}}
+{{- $sameAs := slice -}}
+{{- with .Site.Params.seo.organization.sameAs -}}
+    {{- $sameAs = . -}}
+{{- else -}}
+    {{- with .Site.Author.github -}}
+        {{- $sameAs = $sameAs | append (printf "https://github.com/%s" .) -}}
+    {{- end -}}
+    {{- with .Site.Author.twitter -}}
+        {{- $sameAs = $sameAs | append (printf "https://twitter.com/%s" .) -}}
+    {{- end -}}
+    {{- with .Site.Author.linkedin -}}
+        {{- $sameAs = $sameAs | append (printf "https://linkedin.com/in/%s" .) -}}
+    {{- end -}}
+{{- end -}}
+
+{{- /* Build the schema object */ -}}
+{{- $schema := dict "@context" "https://schema.org" "@type" "Organization" "url" $orgURL "name" $orgName -}}
+
+{{- with $orgDescription -}}
+    {{- $schema = merge $schema (dict "description" .) -}}
+{{- end -}}
+
+{{- if $orgLogo -}}
+    {{- $schema = merge $schema (dict "logo" $orgLogo) -}}
+{{- end -}}
+
+{{- /* Add founder if author info exists */ -}}
+{{- if or .Site.Author.name .Site.Author.homepage -}}
+    {{- $founder := dict "@type" "Person" -}}
+    {{- with .Site.Author.name -}}
+        {{- $founder = merge $founder (dict "name" .) -}}
+    {{- end -}}
+    {{- with .Site.Author.homepage -}}
+        {{- $founder = merge $founder (dict "url" (. | absURL)) -}}
+    {{- end -}}
+    {{- $schema = merge $schema (dict "founder" $founder) -}}
+{{- end -}}
+
+{{- /* Add sameAs */ -}}
+{{- if $sameAs -}}
+    {{- $schema = merge $schema (dict "sameAs" $sameAs) -}}
+{{- end -}}
+
+{{- /* Add contactPoint if meaningful data exists */ -}}
+{{- with .Site.Params.seo.organization.contactPoint -}}
+    {{- if or .email .telephone -}}
+        {{- $contactPoint := dict "@type" "ContactPoint" -}}
+        {{- with .type -}}
+            {{- $contactPoint = merge $contactPoint (dict "contactType" .) -}}
+        {{- end -}}
+        {{- with .email -}}
+            {{- $contactPoint = merge $contactPoint (dict "email" .) -}}
+        {{- end -}}
+        {{- with .telephone -}}
+            {{- $contactPoint = merge $contactPoint (dict "telephone" .) -}}
+        {{- end -}}
+        {{- with .areaServed -}}
+            {{- $contactPoint = merge $contactPoint (dict "areaServed" .) -}}
+        {{- end -}}
+        {{- with .availableLanguage -}}
+            {{- $contactPoint = merge $contactPoint (dict "availableLanguage" .) -}}
+        {{- end -}}
+        {{- $schema = merge $schema (dict "contactPoint" $contactPoint) -}}
+    {{- end -}}
+{{- end -}}
+
+{{- /* Add address if meaningful data exists */ -}}
+{{- with .Site.Params.seo.organization.address -}}
+    {{- if or .streetAddress .addressLocality .addressRegion .postalCode .addressCountry -}}
+        {{- $address := dict "@type" "PostalAddress" -}}
+        {{- with .streetAddress -}}
+            {{- $address = merge $address (dict "streetAddress" .) -}}
+        {{- end -}}
+        {{- with .addressLocality -}}
+            {{- $address = merge $address (dict "addressLocality" .) -}}
+        {{- end -}}
+        {{- with .addressRegion -}}
+            {{- $address = merge $address (dict "addressRegion" .) -}}
+        {{- end -}}
+        {{- with .postalCode -}}
+            {{- $address = merge $address (dict "postalCode" .) -}}
+        {{- end -}}
+        {{- with .addressCountry -}}
+            {{- $address = merge $address (dict "addressCountry" .) -}}
+        {{- end -}}
+        {{- $schema = merge $schema (dict "address" $address) -}}
+    {{- end -}}
+{{- end -}}
+
+{{- /* Add founding date */ -}}
+{{- with .Site.Params.seo.organization.foundingDate -}}
+    {{- $schema = merge $schema (dict "foundingDate" .) -}}
+{{- end -}}
+
+<script type="application/ld+json">
+{{ $schema | jsonify (dict "indent" "    ") | safeJS }}
+</script>

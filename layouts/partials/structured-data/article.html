@@ -39,50 +39,115 @@
     {{- $publisherLogo = "/img/avatar.png" | absURL -}}
 {{- end -}}
 
+{{- /* Determine article type based on params or section */ -}}
+{{- $articleType := .Params.schemaType -}}
+{{- if not $articleType -}}
+    {{- if or (eq .Type "news") (eq .Section "news") -}}
+        {{- $articleType = "NewsArticle" -}}
+    {{- else if or (eq .Type "blog") (eq .Section "post") -}}
+        {{- $articleType = "BlogPosting" -}}
+    {{- else -}}
+        {{- $articleType = "Article" -}}
+    {{- end -}}
+{{- end -}}
+
+{{- /* Collect author social links */ -}}
+{{- $authorSameAs := slice -}}
+{{- with .Site.Author.github -}}
+    {{- $authorSameAs = $authorSameAs | append (printf "https://github.com/%s" .) -}}
+{{- end -}}
+{{- with .Site.Author.twitter -}}
+    {{- $authorSameAs = $authorSameAs | append (printf "https://twitter.com/%s" .) -}}
+{{- end -}}
+{{- with .Site.Author.linkedin -}}
+    {{- $authorSameAs = $authorSameAs | append (printf "https://linkedin.com/in/%s" .) -}}
+{{- end -}}
+{{- with .Site.Author.website -}}
+    {{- $authorSameAs = $authorSameAs | append . -}}
+{{- end -}}
+
+{{- /* Get description */ -}}
+{{- $description := .Description | default (.Summary | plainify) -}}
+
+{{- /* Build the schema object */ -}}
+{{- $schema := dict "@context" "https://schema.org" "@type" $articleType -}}
+{{- $schema = merge $schema (dict "mainEntityOfPage" (dict "@type" "WebPage" "@id" .Permalink)) -}}
+{{- $schema = merge $schema (dict "headline" .Title) -}}
+{{- $schema = merge $schema (dict "description" $description) -}}
+
+{{- with $inLanguage -}}
+    {{- $schema = merge $schema (dict "inLanguage" .) -}}
+{{- end -}}
+
+{{- with $image -}}
+    {{- $schema = merge $schema (dict "image" .) -}}
+{{- end -}}
+
+{{- with $keywords -}}
+    {{- $schema = merge $schema (dict "keywords" .) -}}
+{{- end -}}
+
+{{- with $articleSection -}}
+    {{- $schema = merge $schema (dict "articleSection" .) -}}
+{{- end -}}
+
+{{- $schema = merge $schema (dict "wordCount" .WordCount) -}}
+
+{{- with $timeRequired -}}
+    {{- $schema = merge $schema (dict "timeRequired" .) -}}
+{{- end -}}
+
+{{- $schema = merge $schema (dict "datePublished" ((.PublishDate | default .Date).Format "2006-01-02T15:04:05Z07:00")) -}}
+{{- $schema = merge $schema (dict "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")) -}}
+
+{{- /* Build author object */ -}}
+{{- $author := dict "@type" "Person" "name" $authorName "url" $authorURL -}}
+{{- with $authorImage -}}
+    {{- $author = merge $author (dict "image" .) -}}
+{{- end -}}
+{{- with $authorSameAs -}}
+    {{- $author = merge $author (dict "sameAs" .) -}}
+{{- end -}}
+{{- $schema = merge $schema (dict "author" $author) -}}
+
+{{- /* Build publisher object */ -}}
+{{- $publisher := dict "@type" "Organization" "name" .Site.Title "logo" (dict "@type" "ImageObject" "url" $publisherLogo) -}}
+{{- $schema = merge $schema (dict "publisher" $publisher) -}}
+
+{{- /* Add license */ -}}
+{{- with .Params.license -}}
+    {{- $schema = merge $schema (dict "license" .) -}}
+{{- end -}}
+
+{{- /* Add accessibility info */ -}}
+{{- with .Site.Params.seo.accessibility -}}
+    {{- $schema = merge $schema (dict "accessMode" (.accessMode | default "textual,visual")) -}}
+    {{- $schema = merge $schema (dict "accessibilityFeature" (.accessibilityFeature | default "alternativeText,readingOrder")) -}}
+    {{- $schema = merge $schema (dict "accessibilitySummary" (.summary | default "The content is accessible for screen readers and keyboard navigation.")) -}}
+{{- end -}}
+
+{{- /* Add NewsArticle specific fields */ -}}
+{{- if eq $articleType "NewsArticle" -}}
+    {{- with .Params.news -}}
+        {{- with .dateline -}}
+            {{- $schema = merge $schema (dict "dateline" .) -}}
+        {{- end -}}
+        {{- with .printSection -}}
+            {{- $schema = merge $schema (dict "printSection" .) -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+{{- /* Add BlogPosting specific fields */ -}}
+{{- if eq $articleType "BlogPosting" -}}
+    {{- with .Params.blog -}}
+        {{- with .mentions -}}
+            {{- $schema = merge $schema (dict "mentions" .) -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
 <script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": {{ .Permalink | jsonify }}
-    },
-    "headline": {{ .Title | jsonify }},
-    {{- with $inLanguage }}
-    "inLanguage": {{ . | jsonify }},
-    {{- end }}
-    "description": {{ with .Description }}{{ . | jsonify }}{{ else }}{{ .Summary | plainify | jsonify }}{{ end }},
-    {{- with $image }}
-    "image": {{ . | jsonify }},
-    {{- end }}
-    {{- with $keywords }}
-    "keywords": {{ . | jsonify }},
-    {{- end }}
-    {{- with $articleSection }}
-    "articleSection": {{ . | jsonify }},
-    {{- end }}
-    "wordCount": {{ .WordCount }},
-    {{- with $timeRequired }}
-    "timeRequired": {{ . | jsonify }},
-    {{- end }}
-    "datePublished": {{ .Date.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
-    "dateModified": {{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" | jsonify }},
-    "author": {
-        "@type": "Person",
-        "name": {{ $authorName | jsonify }},
-        "url": {{ $authorURL | jsonify }}{{- if $authorImage }},{{- end }}
-        {{- with $authorImage }}
-        "image": {{ . | jsonify }}
-        {{- end }}
-    },
-    "publisher": {
-        "@type": "Organization",
-        "name": {{ .Site.Title | jsonify }},
-        "logo": {
-            "@type": "ImageObject",
-            "url": {{ $publisherLogo | jsonify }}
-        }
-    }
-}
+{{ $schema | jsonify (dict "indent" "    ") | safeJS }}
 </script>
 {{- end -}}

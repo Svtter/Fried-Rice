@@ -1,6 +1,9 @@
 {{- if .Site.Params.seo.structuredData | default true -}}
+    {{- partial "structured-data/website" . -}}
+    {{- partial "structured-data/organization" . -}}
     {{- if .IsPage -}}
         {{- partial "structured-data/article" . -}}
+        {{- partial "structured-data/faq" . -}}
     {{- end -}}
     {{- partial "structured-data/breadcrumb" . -}}
 {{- end -}}
