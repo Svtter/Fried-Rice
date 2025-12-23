@@ -2,6 +2,12 @@
 
 A warm, modern Hugo theme with earth-tone colors and flat design philosophy. Based on the excellent [Stack theme](https://github.com/CaiJimmy/hugo-theme-stack) by Jimmy Cai, Fried Rice brings a fresh, minimalist aesthetic with enhanced features.
 
+## Screenshot
+
+![Fried Rice Theme Screenshot](images/screenshot.png)
+
+![Article Page with TOC Sidebar](images/screenshot-article.png)
+
 ## ✨ Features
 
 ### 🎨 Design Philosophy
