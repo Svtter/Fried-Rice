@@ -1,0 +1,47 @@
+{{- $siteName := .Site.Title -}}
+{{- $siteDescription := .Site.Params.description | default .Site.Params.subtitle -}}
+{{- $siteURL := .Site.BaseURL | absURL -}}
+{{- $searchActionURL := "" -}}
+
+{{- with .Site.Params.search -}}
+    {{- if .enabled -}}
+        {{- $searchActionURL = printf "%s%s" $siteURL .path | default (printf "%ssearch/" $siteURL) -}}
+    {{- end -}}
+{{- end -}}
+
+{{- /* Get potential action URL from search widget */ -}}
+{{- if not $searchActionURL -}}
+    {{- range .Site.Params.widgets.homepage -}}
+        {{- if eq .type "search" -}}
+            {{- $searchActionURL = printf "%ssearch/" $siteURL -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": {{ $siteURL | jsonify }},
+    "name": {{ $siteName | jsonify }},
+    {{- with $siteDescription }}
+    "description": {{ . | jsonify }},
+    {{- end }}
+    {{- with .Site.Params.logo }}
+    "logo": {{ . | absURL | jsonify }},
+    {{- end }}
+    {{- with .Site.Language.Lang }}
+    "inLanguage": {{ . | jsonify }},
+    {{- end }}
+    {{- with $searchActionURL }}
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": {{ printf "%s?q={search_term_string}" $searchActionURL | jsonify }}
+        },
+        "query-input": "required name=search_term_string"
+    }
+    {{- end }}
+}
+</script>

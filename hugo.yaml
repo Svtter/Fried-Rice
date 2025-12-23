@@ -143,7 +143,7 @@ params:
         default: auto
 
     seo:
-        # Enable JSON-LD structured data (Article, BreadcrumbList)
+        # Enable JSON-LD structured data (Article, BreadcrumbList, etc.)
         structuredData: true
         
         # Enable performance hints (preconnect, dns-prefetch)
@@ -151,6 +151,36 @@ params:
         
         # Additional domains for preconnect/dns-prefetch
         preconnectDomains: []
+
+        # Organization schema configuration
+        organization:
+            # Social media links for sameAs
+            sameAs: []
+            
+            # Contact point for organization
+            contactPoint:
+                type: "customer support"
+                email:
+                telephone:
+                areaServed: "Worldwide"
+                availableLanguage: "en, zh"
+            
+            # Organization address
+            address:
+                streetAddress:
+                addressLocality:
+                addressRegion:
+                postalCode:
+                addressCountry:
+            
+            # Organization founding date
+            foundingDate:
+
+        # Accessibility metadata for articles
+        accessibility:
+            accessMode: "textual,visual"
+            accessibilityFeature: "alternativeText,readingOrder"
+            summary: "The content is accessible for screen readers and keyboard navigation."
 
     imageProcessing:
         cover:
