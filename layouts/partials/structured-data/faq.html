@@ -1,24 +1,18 @@
 {{- if .Params.faq -}}
     {{- $faqItems := slice -}}
-    
-    {{- if eq (printf "%T" .Params.faq) "map[string]interface {}" -}}
+
+    {{- /* Handle map format: faq: { "Question?": "Answer" } */ -}}
+    {{- if reflect.IsMap .Params.faq -}}
         {{- range $question, $answer := .Params.faq -}}
             {{- $faqItems = $faqItems | append (dict "@type" "Question" "name" $question "acceptedAnswer" (dict "@type" "Answer" "text" $answer)) -}}
         {{- end -}}
     {{- else -}}
-        {{- range .Params.faq -}}
-            {{- with .question -}}
-                {{- with $.answer -}}
-                    {{- $faqItems = $faqItems | append (dict "@type" "Question" "name" .question "acceptedAnswer" (dict "@type" "Answer" "text" $.answer)) -}}
-                {{- end -}}
-            {{- else -}}
-                {{- range $item := . -}}
-                    {{- if reflect.IsMap $item -}}
-                        {{- with $item.question -}}
-                            {{- with $item.answer -}}
-                                {{- $faqItems = $faqItems | append (dict "@type" "Question" "name" $item.question "acceptedAnswer" (dict "@type" "Answer" "text" $item.answer)) -}}
-                            {{- end -}}
-                        {{- end -}}
+        {{- /* Handle array format: faq: [ { question: "Q?", answer: "A" } ] */ -}}
+        {{- range $item := .Params.faq -}}
+            {{- if reflect.IsMap $item -}}
+                {{- with $item.question -}}
+                    {{- with $item.answer -}}
+                        {{- $faqItems = $faqItems | append (dict "@type" "Question" "name" $item.question "acceptedAnswer" (dict "@type" "Answer" "text" $item.answer)) -}}
                     {{- end -}}
                 {{- end -}}
             {{- end -}}
@@ -26,12 +20,9 @@
     {{- end -}}
 
     {{- if $faqItems -}}
+        {{- $schema := dict "@context" "https://schema.org" "@type" "FAQPage" "mainEntity" $faqItems -}}
 <script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": {{ $faqItems | jsonify }}
-}
+{{ $schema | jsonify (dict "indent" "    ") | safeJS }}
 </script>
     {{- end -}}
 {{- end -}}
