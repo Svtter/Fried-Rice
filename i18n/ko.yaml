@@ -70,3 +70,5 @@ footer:
         other: "{{ .Generator }}로 만듦"
     designedBy:
         other: "{{ .DesignedBy }}의 {{ .Theme }} 테마 사용 중"
+    sourceCode:
+        other: Source code on {{ .GitHub }}

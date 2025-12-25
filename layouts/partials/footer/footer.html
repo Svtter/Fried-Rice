@@ -13,10 +13,8 @@
             {{ . | safeHTML }} <br/>
         {{ end }}
 
-        {{- $ThemeText := `主题 <b>Fried Rice</b> 由 <a href="https://svtter.cn" target="_blank" rel="noopener">svtter</a> 设计` -}}
-        {{- $BuiltOnText := `Fried Rice theme <a href="https://github.com/Svtter/Fried-Rice" target="_blank" rel="noopener">GitHub</a>` -}}
-
-        {{ $ThemeText | safeHTML }} <br />
-        {{ $BuiltOnText | safeHTML }}
+        {{- $designedByLink := `<a href="https://svtter.cn" target="_blank" rel="noopener">svtter</a>` -}}
+        {{ T "footer.designedBy" (dict "Theme" "<b>Fried Rice</b>" "DesignedBy" $designedByLink) | safeHTML }} <br />
+        {{ T "footer.sourceCode" (dict "GitHub" `<a href="https://github.com/Svtter/Fried-Rice" target="_blank" rel="noopener">GitHub</a>`) | safeHTML }}
     </section>
 </footer>

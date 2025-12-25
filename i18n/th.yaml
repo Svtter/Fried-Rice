@@ -68,3 +68,5 @@ footer:
 
     designedBy:
         other: ธีม {{ .Theme }} ออกแบบโดย {{ .DesignedBy }}
+    sourceCode:
+        other: Source code on {{ .GitHub }}

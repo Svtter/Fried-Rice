@@ -70,3 +70,5 @@ footer:
 
     designedBy:
         other: Tàma {{ .Theme }} concebut per {{ .DesignedBy }}
+    sourceCode:
+        other: Source code on {{ .GitHub }}

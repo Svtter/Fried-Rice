@@ -64,3 +64,5 @@ footer:
         other: Создано при помощи {{ .Generator }}
     designedBy:
         other: Тема {{ .Theme }}, дизайн {{ .DesignedBy }}
+    sourceCode:
+        other: Source code on {{ .GitHub }}

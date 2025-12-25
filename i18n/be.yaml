@@ -70,3 +70,5 @@ footer:
 
     designedBy:
         other: Тэма {{ .Theme }}, дызайн {{ .DesignedBy }}
+    sourceCode:
+        other: Source code on {{ .GitHub }}

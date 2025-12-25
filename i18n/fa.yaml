@@ -71,3 +71,5 @@ footer:
 
     designedBy:
         other: قالب {{ .Theme }} ساخته شده توسط {{ .DesignedBy }}
+    sourceCode:
+        other: Source code on {{ .GitHub }}

@@ -71,3 +71,5 @@ footer:
 
     designedBy:
         other: "থিম {{ .Theme }} ডিজাইন করেছেন {{ .DesignedBy }}"
+    sourceCode:
+        other: Source code on {{ .GitHub }}
