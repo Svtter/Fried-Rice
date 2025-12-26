@@ -71,3 +71,5 @@ footer:
 
     designedBy:
         other: Tema {{ .Theme }} diseñado por {{ .DesignedBy }}
+    sourceCode:
+        other: Source code on {{ .GitHub }}

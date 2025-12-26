@@ -68,3 +68,5 @@ footer:
 
     designedBy:
         other: Το θέμα {{ .Theme }} σχεδιάστηκε από το {{ .DesignedBy }}
+    sourceCode:
+        other: Source code on {{ .GitHub }}

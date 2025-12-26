@@ -65,3 +65,5 @@ footer:
         other: Criado com {{ .Generator }}
     designedBy:
         other: Tema {{ .Theme }} desenvolvido por {{ .DesignedBy }}
+    sourceCode:
+        other: Source code on {{ .GitHub }}

@@ -68,3 +68,5 @@ footer:
 
     designedBy:
         other: テーマ {{ .Theme }} は {{ .DesignedBy }} によって設計されています。
+    sourceCode:
+        other: Source code on {{ .GitHub }}

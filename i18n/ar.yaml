@@ -72,3 +72,5 @@ footer:
         
     designedBy:
         other:  "قالب {{ .Theme }} مصمم من {{ .DesignedBy }}"
+    sourceCode:
+        other: Source code on {{ .GitHub }}

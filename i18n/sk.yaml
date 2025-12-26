@@ -69,3 +69,5 @@ footer:
 
     designedBy:
         other: Šablóna {{ .Theme }} od {{ .DesignedBy }}
+    sourceCode:
+        other: Source code on {{ .GitHub }}

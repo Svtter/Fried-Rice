@@ -57,3 +57,5 @@ footer:
         other: Gemaakt met {{ .Generator }}
     designedBy:
         other: Theme {{ .Theme }} ontworpen door {{ .DesignedBy }}
+    sourceCode:
+        other: Source code on {{ .GitHub }}

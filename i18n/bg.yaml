@@ -71,3 +71,5 @@ footer:
 
     designedBy:
         other: Тема {{ .Theme }} създадена от {{ .DesignedBy }}
+    sourceCode:
+        other: Source code on {{ .GitHub }}

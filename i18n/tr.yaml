@@ -65,3 +65,5 @@ footer:
         other: "{{ .Generator }} ile oluşturuldu."
     designedBy:
         other: "{{ .Theme }} teması {{ .DesignedBy }} tarafından tasarlandı"
+    sourceCode:
+        other: Source code on {{ .GitHub }}

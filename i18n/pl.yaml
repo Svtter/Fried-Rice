@@ -80,3 +80,5 @@ footer:
 
     designedBy:
         other: Motyw {{ .Theme }} zaprojektowany przez {{ .DesignedBy }}
+    sourceCode:
+        other: Source code on {{ .GitHub }}
