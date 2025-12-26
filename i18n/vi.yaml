@@ -72,5 +72,6 @@ footer:
 
   designedBy:
     other: Theme {{ .Theme }} thiết kế bởi {{ .DesignedBy }}
-    sourceCode:
-        other: Source code on {{ .GitHub }}
+
+  sourceCode:
+    other: Source code on {{ .GitHub }}
