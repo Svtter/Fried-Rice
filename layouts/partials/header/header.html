@@ -48,14 +48,20 @@
 
                 {{/* Language toggle button */}}
                 {{- if (gt (len .Site.Languages) 1) -}}
-                    {{ $currentLang := .Lang }}
-                    {{ $targetLang := "" }}
-                    {{ range .Site.Languages }}
-                        {{ if ne .Lang $currentLang }}
-                            {{ $targetLang = .Lang }}
-                        {{ end }}
-                    {{ end }}
-                    <a href="{{ .Permalink | relLangURL }}"
+                    {{- $targetURL := "" -}}
+                    {{- if .Translations -}}
+                        {{/* If current page has translations, link to the first translation */}}
+                        {{- $targetURL = (index .Translations 0).Permalink -}}
+                    {{- else -}}
+                        {{/* If no translation exists, link to target language homepage */}}
+                        {{- $currentLang := .Lang -}}
+                        {{- range .Site.Languages -}}
+                            {{- if ne .Lang $currentLang -}}
+                                {{- $targetURL = (printf "/%s/" .Lang) -}}
+                            {{- end -}}
+                        {{- end -}}
+                    {{- end -}}
+                    <a href="{{ $targetURL }}"
                        class="language-toggle"
                        aria-label="{{ T `switchLanguage` }}"
                        title="{{ T `switchLanguage` }}">
@@ -122,7 +128,18 @@
                 </a>
                 {{/* Language switch in mobile menu */}}
                 {{- if (gt (len .Site.Languages) 1) -}}
-                    <a href="{{ .Permalink | relLangURL }}"
+                    {{- $mobileTargetURL := "" -}}
+                    {{- if .Translations -}}
+                        {{- $mobileTargetURL = (index .Translations 0).Permalink -}}
+                    {{- else -}}
+                        {{- $currentLang := .Lang -}}
+                        {{- range .Site.Languages -}}
+                            {{- if ne .Lang $currentLang -}}
+                                {{- $mobileTargetURL = (printf "/%s/" .Lang) -}}
+                            {{- end -}}
+                        {{- end -}}
+                    {{- end -}}
+                    <a href="{{ $mobileTargetURL }}"
                        class="mobile-social-link language-link">
                         {{ partial "helper/icon" "language" }}
                         <span>{{ T `switchLanguage` }}</span>
