@@ -1,6 +1,9 @@
 toggleMenu:
     other: 切换菜单
 
+switchLanguage:
+    other: 切换语言
+
 darkMode:
     other: 暗色模式
 

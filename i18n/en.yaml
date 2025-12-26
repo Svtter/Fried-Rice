@@ -1,6 +1,9 @@
 toggleMenu:
     other: Toggle Menu
 
+switchLanguage:
+    other: Switch language
+
 darkMode:
     other: Dark Mode
 
