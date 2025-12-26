@@ -46,6 +46,29 @@
                     {{ partial "helper/icon" "rss" }}
                 </a>
 
+                {{/* Language toggle button */}}
+                {{- if (gt (len .Site.Languages) 1) -}}
+                    {{- $targetURL := "" -}}
+                    {{- if .Translations -}}
+                        {{/* If current page has translations, link to the first translation */}}
+                        {{- $targetURL = (index .Translations 0).Permalink -}}
+                    {{- else -}}
+                        {{/* If no translation exists, link to target language homepage */}}
+                        {{- $currentLang := .Lang -}}
+                        {{- range .Site.Languages -}}
+                            {{- if ne .Lang $currentLang -}}
+                                {{- $targetURL = (printf "/%s/" .Lang) -}}
+                            {{- end -}}
+                        {{- end -}}
+                    {{- end -}}
+                    <a href="{{ $targetURL }}"
+                       class="language-toggle"
+                       aria-label="{{ T `switchLanguage` }}"
+                       title="{{ T `switchLanguage` }}">
+                        {{ partial "helper/icon" "language" }}
+                    </a>
+                {{- end -}}
+
                 {{/* Theme toggle button */}}
                 {{- if (default false .Site.Params.colorScheme.toggle) -}}
                     <button id="dark-mode-toggle"
@@ -103,6 +126,25 @@
                     {{ partial "helper/icon" "rss" }}
                     <span>RSS</span>
                 </a>
+                {{/* Language switch in mobile menu */}}
+                {{- if (gt (len .Site.Languages) 1) -}}
+                    {{- $mobileTargetURL := "" -}}
+                    {{- if .Translations -}}
+                        {{- $mobileTargetURL = (index .Translations 0).Permalink -}}
+                    {{- else -}}
+                        {{- $currentLang := .Lang -}}
+                        {{- range .Site.Languages -}}
+                            {{- if ne .Lang $currentLang -}}
+                                {{- $mobileTargetURL = (printf "/%s/" .Lang) -}}
+                            {{- end -}}
+                        {{- end -}}
+                    {{- end -}}
+                    <a href="{{ $mobileTargetURL }}"
+                       class="mobile-social-link language-link">
+                        {{ partial "helper/icon" "language" }}
+                        <span>{{ T `switchLanguage` }}</span>
+                    </a>
+                {{- end -}}
             </div>
         </div>
     </nav>
