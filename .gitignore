@@ -5,3 +5,5 @@ assets/jsconfig.json
 .hugo_build.lock
 
 .playwright-mcp
+
+realBlog
