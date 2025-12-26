@@ -8,16 +8,14 @@
         {{ with .Site.Params.hero.subtitle }}
         <p class="hero-subtitle">{{ . }}</p>
         {{ else }}
-        <p class="hero-subtitle">软件工程师 / 技术写作者</p>
+        <p class="hero-subtitle">{{ i18n "hero.defaultSubtitle" }}</p>
         {{ end }}
 
         {{/* Description */}}
         {{ with .Site.Params.hero.description }}
         <p class="hero-description">{{ . }}</p>
         {{ else }}
-        <p class="hero-description">
-            专注于编程技术、机器学习和开发工具。分享实践经验，探索技术的本质，记录学习的旅程。从代码实现到工程实践，在这里与你分享我的思考与发现。
-        </p>
+        <p class="hero-description">{{ i18n "hero.defaultDescription" }}</p>
         {{ end }}
 
         {{/* Topic tags/pills */}}
@@ -29,21 +27,21 @@
         </div>
         {{ else }}
         <div class="hero-topics">
-            <span class="hero-topic-pill">编程</span>
-            <span class="hero-topic-pill">机器学习</span>
-            <span class="hero-topic-pill">开发工具</span>
-            <span class="hero-topic-pill">技术写作</span>
+            <span class="hero-topic-pill">{{ i18n "hero.defaultTopics.programming" }}</span>
+            <span class="hero-topic-pill">{{ i18n "hero.defaultTopics.machineLearning" }}</span>
+            <span class="hero-topic-pill">{{ i18n "hero.defaultTopics.devTools" }}</span>
+            <span class="hero-topic-pill">{{ i18n "hero.defaultTopics.technicalWriting" }}</span>
         </div>
         {{ end }}
 
         {{/* Newsletter subscription */}}
         <div class="hero-newsletter">
-            <p class="newsletter-description">📧 订阅获取最新文章推送</p>
+            <p class="newsletter-description">{{ i18n "hero.newsletter.description" }}</p>
             <form action="https://listmonk.sun-praise.com/subscription/form" method="post" target="_blank" class="hero-newsletter-form">
-                <input type="email" name="email" placeholder="输入您的邮箱地址" required class="newsletter-email">
-                <input type="hidden" name="name" value="博客订阅者">
+                <input type="email" name="email" placeholder="{{ i18n "hero.newsletter.emailPlaceholder" }}" required class="newsletter-email">
+                <input type="hidden" name="name" value="{{ i18n "hero.newsletter.subscriberName" }}">
                 <input type="hidden" name="l" value="2a31a56c-7fc2-47a5-a6f7-4e6556946ed3">
-                <button type="submit" class="newsletter-submit">订阅</button>
+                <button type="submit" class="newsletter-submit">{{ i18n "hero.newsletter.submit" }}</button>
             </form>
         </div>
     </div>

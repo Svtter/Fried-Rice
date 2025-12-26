@@ -68,6 +68,35 @@ search:
     resultTitle:
         other: "#PAGES_COUNT pages (#TIME_SECONDS seconds)"
 
+home:
+    latestPosts:
+        other: Latest Posts
+    viewAll:
+        other: View all
+
+hero:
+    defaultSubtitle:
+        other: Software Engineer / Technical Writer
+
+    defaultDescription:
+        other: Focused on programming, machine learning, and development tools. Sharing practical experiences, exploring the essence of technology, and documenting the learning journey. From code implementation to engineering practice, sharing my thoughts and discoveries with you here.
+
+    defaultTopics:
+        programming: Programming
+        machineLearning: Machine Learning
+        devTools: Development Tools
+        technicalWriting: Technical Writing
+
+    newsletter:
+        description:
+            other: Subscribe to get the latest articles
+        emailPlaceholder:
+            other: Enter your email address
+        subscriberName:
+            other: Blog Subscriber
+        submit:
+            other: Subscribe
+
 footer:
     builtWith:
         other: Built with {{ .Generator }}
