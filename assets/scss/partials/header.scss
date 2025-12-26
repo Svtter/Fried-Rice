@@ -108,8 +108,12 @@
     .nav-actions {
         display: flex;
         align-items: center;
-        gap: 1.5rem;
+        gap: 0.5rem; /* Smaller gap on mobile to prevent overlap */
         flex-shrink: 0;
+
+        @include respond(md) {
+            gap: 1.5rem; /* Larger gap on desktop */
+        }
 
         /* Social link styles - applies to all social links */
         .social-link {
