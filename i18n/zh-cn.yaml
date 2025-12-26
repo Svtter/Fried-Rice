@@ -62,6 +62,35 @@ search:
     resultTitle:
         other: "#PAGES_COUNT 个结果 （用时 #TIME_SECONDS 秒）"
 
+home:
+    latestPosts:
+        other: 最新文章
+    viewAll:
+        other: 查看全部
+
+hero:
+    defaultSubtitle:
+        other: 软件工程师 / 技术写作者
+
+    defaultDescription:
+        other: 专注于编程技术、机器学习和开发工具。分享实践经验，探索技术的本质，记录学习的旅程。从代码实现到工程实践，在这里与你分享我的思考与发现。
+
+    defaultTopics:
+        programming: 编程
+        machineLearning: 机器学习
+        devTools: 开发工具
+        technicalWriting: 技术写作
+
+    newsletter:
+        description:
+            other: 📧 订阅获取最新文章推送
+        emailPlaceholder:
+            other: 输入您的邮箱地址
+        subscriberName:
+            other: 博客订阅者
+        submit:
+            other: 订阅
+
 footer:
     builtWith:
         other: 使用 {{ .Generator }} 构建
