@@ -234,6 +234,10 @@
         padding: 8px;
         border-radius: 8px;
         transition: background-color 0.3s ease;
+        /* Override menu.scss absolute positioning to stay in flex flow */
+        position: static !important;
+        right: auto !important;
+        top: auto !important;
 
         @include respond(md) {
             display: none;
