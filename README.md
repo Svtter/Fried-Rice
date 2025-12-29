@@ -94,6 +94,36 @@ enableRobotsTXT = true
 
 The theme inherits all Stack theme parameters. See the [Stack documentation](https://stack.jimmycai.com) for detailed configuration options.
 
+### Hero Section Configuration
+
+Customize the hero section on your homepage by adding the following to your `hugo.yaml` or `config.toml`:
+
+```yaml
+# hugo.yaml
+params:
+  hero:
+    subtitle: "Agent Engineer / Software Engineer / Technical Writer"
+    description: "Your custom description text here"
+    topics:
+      - Programming
+      - Machine Learning
+      - Dev Tools
+      - Agent Engineer
+      - Technical Writing
+```
+
+Or in TOML format:
+
+```toml
+# config.toml
+[params.hero]
+  subtitle = "Agent Engineer / Software Engineer / Technical Writer"
+  description = "Your custom description text here"
+  topics = ["Programming", "Machine Learning", "Dev Tools", "Agent Engineer", "Technical Writing"]
+```
+
+If these values are not set, the theme will use default i18n translations from the `i18n/` directory.
+
 ### Newsletter Integration (Optional)
 
 To enable newsletter subscription in the hero section, edit `layouts/partials/hero/hero.html` with your Listmonk endpoint:

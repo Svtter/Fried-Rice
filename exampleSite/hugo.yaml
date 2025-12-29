@@ -27,6 +27,15 @@ languages:
         params:
             sidebar:
                 subtitle: 演示说明
+            hero:
+                subtitle: Agent工程师 / 软件工程师 / 技术写作者
+                description: 专注于编程技术、机器学习和开发工具。分享实践经验，探索技术的本质，记录学习的旅程。
+                topics:
+                    - 编程
+                    - 机器学习
+                    - 开发工具
+                    - Agent工程师
+                    - 技术写作
     ar:
         languageName: عربي
         languagedirection: rtl
@@ -57,6 +66,20 @@ params:
     featuredImageField: image
     rssFullContent: true
     favicon: # e.g.: favicon placed in `static/favicon.ico` of your site folder, then set this field to `/favicon.ico` (`/` is necessary)
+
+    # Hero section configuration
+    hero:
+        # Subtitle shown below the site title (e.g., "Agent Engineer / Software Engineer / Technical Writer")
+        subtitle: Agent Engineer / Software Engineer / Technical Writer
+        # Description text
+        description: Focused on programming, machine learning, and development tools. Sharing practical experiences, exploring the essence of technology, and documenting the learning journey.
+        # Topic tags/pills shown in the hero section
+        topics:
+            - Programming
+            - Machine Learning
+            - Dev Tools
+            - Agent Engineer
+            - Technical Writing
 
     footer:
         since: 2020

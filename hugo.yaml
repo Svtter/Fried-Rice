@@ -10,6 +10,26 @@ params:
     rssFullContent: true
     favicon:
 
+    # Hero section configuration
+    # Configure the hero section shown on the homepage
+    hero:
+        # Subtitle shown below the site title
+        # If not set, will use i18n translation "hero.defaultSubtitle"
+        subtitle:
+
+        # Description text shown in the hero section
+        # If not set, will use i18n translation "hero.defaultDescription"
+        description:
+
+        # Topic tags/pills shown in the hero section
+        # If not set, will use i18n translations from "hero.defaultTopics"
+        # Example:
+        # topics:
+        #     - Programming
+        #     - Machine Learning
+        #     - Dev Tools
+        topics:
+
     footer:
         since:
         customText:

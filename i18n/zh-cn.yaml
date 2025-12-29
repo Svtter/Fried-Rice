@@ -70,7 +70,7 @@ home:
 
 hero:
     defaultSubtitle:
-        other: 软件工程师 / 技术写作者
+        other: Agent工程师 / 软件工程师 / 技术写作者
 
     defaultDescription:
         other: 专注于编程技术、机器学习和开发工具。分享实践经验，探索技术的本质，记录学习的旅程。从代码实现到工程实践，在这里与你分享我的思考与发现。
@@ -79,6 +79,7 @@ hero:
         programming: 编程
         machineLearning: 机器学习
         devTools: 开发工具
+        agentEngineer: Agent工程师
         technicalWriting: 技术写作
 
     newsletter:
