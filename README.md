@@ -102,7 +102,7 @@ Customize the hero section on your homepage by adding the following to your `hug
 # hugo.yaml
 params:
   hero:
-    subtitle: "Software Engineer / Technical Writer"
+    subtitle: "Agent Engineer / Software Engineer / Technical Writer"
     description: "Your custom description text here"
     topics:
       - Programming
@@ -117,7 +117,7 @@ Or in TOML format:
 ```toml
 # config.toml
 [params.hero]
-  subtitle = "Software Engineer / Technical Writer"
+  subtitle = "Agent Engineer / Software Engineer / Technical Writer"
   description = "Your custom description text here"
   topics = ["Programming", "Machine Learning", "Dev Tools", "Agent Engineer", "Technical Writing"]
 ```

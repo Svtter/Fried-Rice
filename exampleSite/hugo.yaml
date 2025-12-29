@@ -28,7 +28,7 @@ languages:
             sidebar:
                 subtitle: 演示说明
             hero:
-                subtitle: 软件工程师 / 技术写作者
+                subtitle: Agent工程师 / 软件工程师 / 技术写作者
                 description: 专注于编程技术、机器学习和开发工具。分享实践经验，探索技术的本质，记录学习的旅程。
                 topics:
                     - 编程
@@ -69,8 +69,8 @@ params:
 
     # Hero section configuration
     hero:
-        # Subtitle shown below the site title (e.g., "Software Engineer / Technical Writer")
-        subtitle: Software Engineer / Technical Writer
+        # Subtitle shown below the site title (e.g., "Agent Engineer / Software Engineer / Technical Writer")
+        subtitle: Agent Engineer / Software Engineer / Technical Writer
         # Description text
         description: Focused on programming, machine learning, and development tools. Sharing practical experiences, exploring the essence of technology, and documenting the learning journey.
         # Topic tags/pills shown in the hero section
