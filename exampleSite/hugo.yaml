@@ -34,6 +34,7 @@ languages:
                     - 编程
                     - 机器学习
                     - 开发工具
+                    - Agent工程师
                     - 技术写作
     ar:
         languageName: عربي
@@ -77,6 +78,7 @@ params:
             - Programming
             - Machine Learning
             - Dev Tools
+            - Agent Engineer
             - Technical Writing
 
     footer:

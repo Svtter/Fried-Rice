@@ -108,6 +108,7 @@ params:
       - Programming
       - Machine Learning
       - Dev Tools
+      - Agent Engineer
       - Technical Writing
 ```
 
@@ -118,7 +119,7 @@ Or in TOML format:
 [params.hero]
   subtitle = "Software Engineer / Technical Writer"
   description = "Your custom description text here"
-  topics = ["Programming", "Machine Learning", "Dev Tools", "Technical Writing"]
+  topics = ["Programming", "Machine Learning", "Dev Tools", "Agent Engineer", "Technical Writing"]
 ```
 
 If these values are not set, the theme will use default i18n translations from the `i18n/` directory.
