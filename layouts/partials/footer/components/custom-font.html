@@ -1,11 +1,17 @@
 <script>
     (function () {
-        const customFont = document.createElement('link');
-        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+        // Load Noto Sans SC for body text
+        const notoSansSC = document.createElement('link');
+        notoSansSC.href = "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap";
+        notoSansSC.type = "text/css";
+        notoSansSC.rel = "stylesheet";
+        document.head.appendChild(notoSansSC);
 
-        customFont.type = "text/css";
-        customFont.rel = "stylesheet";
-
-        document.head.appendChild(customFont);
+        // Load LXGW WenKai Screen for headings
+        const lxgwWenKai = document.createElement('link');
+        lxgwWenKai.href = "https://fonts.googleapis.com/css2?family=LXGW+WenKai+Screen&display=swap";
+        lxgwWenKai.type = "text/css";
+        lxgwWenKai.rel = "stylesheet";
+        document.head.appendChild(lxgwWenKai);
     }());
 </script>

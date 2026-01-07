@@ -7,6 +7,7 @@
     padding: 0 var(--container-padding);
 
     .section-title {
+        font-family: var(--heading-font-family);
         font-size: 2.4rem;
         font-weight: 600;
         color: var(--card-text-color-main);
@@ -105,7 +106,7 @@
 }
 
 .article-title {
-    font-family: var(--article-font-family);
+    font-family: var(--heading-font-family);
     font-weight: 600;
     margin: 0;
     color: var(--card-text-color-main);
