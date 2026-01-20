@@ -39,3 +39,20 @@ body {
     background-color: transparent;
 }
 /**/
+
+/* Dark mode ambient glow effect */
+[data-scheme="dark"] body {
+    background: 
+        radial-gradient(
+            ellipse 800px 500px at 35% -10%,
+            rgba(103, 103, 228, 0.10),
+            transparent 60%
+        ),
+        radial-gradient(
+            ellipse 700px 450px at 65% -5%,
+            rgba(139, 92, 246, 0.07),
+            transparent 62%
+        ),
+        var(--body-background);
+    background-attachment: fixed;
+}

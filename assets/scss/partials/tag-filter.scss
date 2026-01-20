@@ -21,7 +21,7 @@
         display: inline-flex;
         align-items: center;
         padding: 8px 20px;
-        background-color: #E8DCC8;  /* Light beige like goal.png */
+        background-color: #E8DCC8;
         color: var(--accent-color);
         border: 1.5px solid var(--accent-color);
         border-radius: var(--tag-border-radius);
@@ -29,8 +29,6 @@
         font-weight: 500;
         cursor: pointer;
         transition: all 0.3s ease;
-
-        /* Remove default button styling */
         font-family: inherit;
         outline: none;
 
@@ -40,7 +38,6 @@
             transform: translateY(-2px);
         }
 
-        /* Active state - dark brown bg with white text */
         &.active {
             background-color: var(--accent-color);
             color: var(--accent-color-text);
@@ -50,6 +47,29 @@
                 background-color: var(--accent-color-darker);
                 border-color: var(--accent-color-darker);
                 transform: translateY(-2px);
+            }
+        }
+
+        /* Dark mode: neutral by default, accent on hover */
+        [data-scheme="dark"] & {
+            background-color: transparent;
+            border-color: rgba(255, 255, 255, 0.10);
+            color: var(--card-text-color-secondary);
+
+            &:hover {
+                background-color: var(--accent-bg);
+                border-color: rgba(103, 103, 228, 0.45);
+                color: var(--card-text-color-main);
+            }
+
+            &.active {
+                background: linear-gradient(135deg, var(--accent-color), var(--accent-color-darker));
+                border-color: transparent;
+                color: white;
+
+                &:hover {
+                    filter: brightness(1.05);
+                }
             }
         }
 

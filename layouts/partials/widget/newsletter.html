@@ -25,7 +25,7 @@
 .newsletter .newsletter-email {
     flex: 1;
     padding: 10px;
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--card-separator-color);
     border-radius: 4px;
     background: var(--card-background);
     color: var(--body-text-color);
@@ -35,7 +35,7 @@
 .newsletter .newsletter-email:focus {
     outline: none;
     border-color: var(--accent-color);
-    box-shadow: 0 0 0 2px var(--accent-color-25);
+    box-shadow: 0 0 0 2px rgba(var(--accent-color-rgb), 0.25);
 }
 
 .newsletter .newsletter-submit {
@@ -63,31 +63,37 @@
 
 /* Dark mode specific styles */
 [data-scheme="dark"] .newsletter .widget-title {
-    color: var(--body-text-color);
+    color: var(--card-text-color-main);
 }
 
 [data-scheme="dark"] .newsletter .widget-body p {
-    color: var(--body-text-color);
+    color: var(--card-text-color-secondary);
 }
 
 [data-scheme="dark"] .newsletter .newsletter-email {
     background: var(--card-background);
-    border-color: var(--border-color);
-    color: var(--body-text-color);
+    border-color: rgba(255, 255, 255, 0.10);
+    color: var(--card-text-color-main);
 }
 
 [data-scheme="dark"] .newsletter .newsletter-email::placeholder {
-    color: var(--body-text-color-50);
+    color: var(--card-text-color-tertiary);
+}
+
+[data-scheme="dark"] .newsletter .newsletter-email:focus {
+    border-color: rgba(103, 103, 228, 0.55);
+    box-shadow: 0 0 0 6px rgba(103, 103, 228, 0.14);
+    background: var(--card-background-selected);
 }
 
 [data-scheme="dark"] .newsletter .newsletter-submit {
-    background: var(--accent-color);
-    color: var(--accent-color-text);
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-color-darker));
+    box-shadow: 0 14px 30px rgba(103, 103, 228, 0.18);
 }
 
 [data-scheme="dark"] .newsletter .newsletter-submit:hover {
-    background: var(--accent-color-darker);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    filter: brightness(1.05);
+    box-shadow: 0 18px 40px rgba(103, 103, 228, 0.25);
 }
 
 @media (max-width: 640px) {
