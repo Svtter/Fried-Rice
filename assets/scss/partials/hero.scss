@@ -88,6 +88,19 @@
             transform: translateY(-2px);
         }
 
+        /* Dark mode: neutral by default, accent on hover */
+        [data-scheme="dark"] & {
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            color: var(--card-text-color-secondary);
+
+            &:hover {
+                background-color: var(--accent-bg);
+                border-color: rgba(103, 103, 228, 0.45);
+                color: var(--card-text-color-main);
+            }
+        }
+
         @include respond(md) {
             padding: 12px 24px;
             font-size: 1.5rem;
@@ -141,6 +154,14 @@
                 &::placeholder {
                     color: var(--card-text-color-tertiary);
                 }
+
+                [data-scheme="dark"] & {
+                    &:focus {
+                        border-color: rgba(103, 103, 228, 0.55);
+                        box-shadow: 0 0 0 6px rgba(103, 103, 228, 0.14);
+                        background: var(--card-background-selected);
+                    }
+                }
             }
 
             .newsletter-submit {
@@ -164,6 +185,16 @@
 
                 &:active {
                     transform: translateY(0);
+                }
+
+                [data-scheme="dark"] & {
+                    background: linear-gradient(135deg, var(--accent-color), var(--accent-color-darker));
+                    box-shadow: 0 14px 30px rgba(103, 103, 228, 0.18);
+
+                    &:hover {
+                        box-shadow: 0 18px 40px rgba(103, 103, 228, 0.25);
+                        filter: brightness(1.05);
+                    }
                 }
             }
         }

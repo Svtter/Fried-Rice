@@ -38,6 +38,18 @@
             background-color: var(--accent-color-darker);
             border-color: var(--accent-color-darker);
         }
+
+        [data-scheme="dark"] & {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-color-darker));
+            border-color: transparent;
+            box-shadow: 0 14px 30px rgba(103, 103, 228, 0.18);
+
+            &:hover {
+                filter: brightness(1.05);
+                box-shadow: 0 18px 40px rgba(103, 103, 228, 0.25);
+                transform: translateY(-1px);
+            }
+        }
     }
 
     /* Outline button */

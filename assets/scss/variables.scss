@@ -31,17 +31,36 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     --scrollbar-track: var(--body-background);
 
     &[data-scheme="dark"] {
-        /* v0-inspired color system - Dark Mode */
-        --body-background: hsl(265, 15%, 12%);  /* Deep blue-ish dark from v0 */
-        --body-background-rgb: 25, 23, 35;
-
-        --accent-color: hsl(240, 70%, 65%);  /* Bright blue from v0 */
-        --accent-color-rgb: 87, 122, 244;
-        --accent-color-darker: hsl(240, 70%, 70%);
-        --accent-color-text: hsl(0, 0%, 98%);
-        --body-text-color: hsl(265, 10%, 92%);
-
-        --scrollbar-thumb: hsl(0, 0%, 40%);
+        // 背景 / 表面 (三层体系)
+        --body-background: #0F1117;
+        --body-background-rgb: 15, 17, 23;
+        
+        // 表面层级
+        --card-background: #151A23;           // surface-1
+        --card-background-rgb: 21, 26, 35;
+        --card-background-selected: #1B2230;  // surface-2
+        
+        // 边框 (白色低透明度)
+        --card-separator-color: rgba(255, 255, 255, 0.10);
+        --card-separator-color-rgb: 255, 255, 255;
+        
+        // 文本三档
+        --body-text-color: #F2F4F8;           // text-1
+        --card-text-color-main: #F2F4F8;      // text-1
+        --card-text-color-secondary: #C7CEDA; // text-2
+        --card-text-color-tertiary: #8E97A8;  // text-3
+        
+        // 强调色
+        --accent-color: #6767E4;
+        --accent-color-rgb: 103, 103, 228;
+        --accent-color-darker: #8B5CF6;       // 用于渐变第二色
+        --accent-color-text: #FFFFFF;
+        
+        // 新增：强调色背景 (用于 hover 状态)
+        --accent-bg: rgba(103, 103, 228, 0.12);
+        
+        // 滚动条
+        --scrollbar-thumb: rgba(255, 255, 255, 0.15);
         --scrollbar-track: var(--body-background);
     }
 }
@@ -91,15 +110,15 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     }
 
     &[data-scheme="dark"] {
-        --card-background: hsl(265, 10%, 15%);  /* Deep dark from v0 */
-        --card-background-rgb: 35, 34, 42;
-        --card-background-selected: hsl(265, 10%, 20%);
+        --card-background: #151A23;
+        --card-background-rgb: 21, 26, 35;
+        --card-background-selected: #1B2230;
 
-        --card-text-color-main: hsl(265, 5%, 92%);
-        --card-text-color-secondary: hsl(265, 5%, 60%);
-        --card-text-color-tertiary: hsl(265, 5%, 45%);
-        --card-separator-color: hsl(265, 5%, 25%);
-        --card-separator-color-rgb: 61, 60, 68;
+        --card-text-color-main: #F2F4F8;
+        --card-text-color-secondary: #C7CEDA;
+        --card-text-color-tertiary: #8E97A8;
+        --card-separator-color: rgba(255, 255, 255, 0.10);
+        --card-separator-color-rgb: 255, 255, 255;
     }
 }
 
@@ -157,13 +176,13 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     --kbd-border-color: #dadada;
 
     &[data-scheme="dark"] {
-        --code-background-color: #272822;
-        --code-text-color: rgba(255, 255, 255, 0.9);
+        --code-background-color: #1B2230;
+        --code-text-color: #C7CEDA;
 
-        --table-border-color: #717171;
-        --tr-even-background-color: #545454;
+        --table-border-color: rgba(255, 255, 255, 0.10);
+        --tr-even-background-color: #151A23;
 
-        --blockquote-background-color: rgb(75 75 75);
+        --blockquote-background-color: #1B2230;
     }
 }
 
@@ -189,6 +208,11 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     --pre-text-color: #f8f8f2;
     --pre-background-color: #272822;
     @import "partials/highlight/dark.scss";
+
+    --shadow-l1: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-l2: 0 4px 16px rgba(0, 0, 0, 0.35);
+    --shadow-l3: 0 8px 24px rgba(0, 0, 0, 0.4);
+    --shadow-l4: 0 18px 50px rgba(0, 0, 0, 0.45);
 }
 
 :root {
