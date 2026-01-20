@@ -178,16 +178,27 @@ Visit [svtter.cn](https://svtter.cn) to see Fried Rice in action.
 
 ## 📝 Version History
 
-- **v0.1.2** (2025-12-22)
-  - Enhanced Article/BlogPosting schema.org SEO with missing fields (keywords, articleSection, wordCount, timeRequired, inLanguage)
-  - Added author image support for schema.org
-  - Updated theme branding from Stack to Fried Rice
-  - Fixed exampleSite configuration and YAML syntax
+- **v0.4.0** (2026-01-20)
+  - Dark mode redesign with three-layer surface system and accent glow effects
+  - Updated Chinese fonts to Noto Sans SC and LXGW WenKai Screen
+  - Added AI agent workflow configuration (OpenSpec framework)
 
-- **v0.1.1** (2025-12-22)
-  - Initial release based on Stack theme
-  - Flat design with warm color palette
-  - Added TOC sidebar
+- **v0.3.3** (2025-12-30)
+  - Configurable hero section parameters for customization
+  - Updated default subtitle and hero topic to Agent Engineer
+
+- **v0.3.0** (2025-12-26)
+  - Language switcher button for EN/ZH language switching
+  - i18n translations for footer and hero sections
+
+- **v0.2.0** (2025-12-23)
+  - WebSite, Organization, and FAQ schema for better SEO
+  - Article/BlogPosting schema enhancements with accessibility metadata
+
+- **v0.1.0** (2025-12-21)
+  - Initial fork from hugo-theme-stack
+  - Table of contents sidebar for article pages
+  - SEO optimizations with JSON-LD structured data
   - RSS icon and newsletter integration
   - Updated pagination style
 
