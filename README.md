@@ -178,6 +178,9 @@ Visit [svtter.cn](https://svtter.cn) to see Fried Rice in action.
 
 ## 📝 Version History
 
+- **v0.4.1** (2026-01-25)
+  - Fix article tag visibility in dark mode
+
 - **v0.4.0** (2026-01-20)
   - Dark mode redesign with three-layer surface system and accent glow effects
   - Updated Chinese fonts to Noto Sans SC and LXGW WenKai Screen
