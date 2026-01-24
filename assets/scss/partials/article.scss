@@ -236,6 +236,17 @@
         &::before {
             content: '#';
         }
+
+        /* Dark mode: improve tag visibility */
+        [data-scheme="dark"] & {
+            background-color: rgba(var(--accent-color-rgb), 0.15);
+            color: var(--card-text-color-secondary);
+
+            &:hover {
+                background-color: rgba(var(--accent-color-rgb), 0.25);
+                color: var(--card-text-color-main);
+            }
+        }
     }
 }
 
