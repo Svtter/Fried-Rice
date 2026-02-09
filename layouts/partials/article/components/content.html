@@ -1,4 +1,19 @@
 <section class="article-content">
+    <div class="tts-player">
+        <button class="tts-play">▶ 听文章</button>
+        <button class="tts-stop">■ 停止</button>
+        <label>语速:
+            <select class="tts-rate">
+                <option value="0.75">0.75x</option>
+                <option value="1" selected>1.0x</option>
+                <option value="1.25">1.25x</option>
+                <option value="1.5">1.5x</option>
+                <option value="2">2.0x</option>
+            </select>
+        </label>
+        <span class="tts-progress"></span>
+    </div>
+
     <!-- Refer to https://discourse.gohugo.io/t/responsive-tables-in-markdown/10639/5 -->
     {{ $wrappedTable := printf "<div class=\"table-wrapper\">${1}</div>" }}
     {{ .Content | replaceRE "(<table>(?:.|\n)+?</table>)" $wrappedTable | safeHTML }}
