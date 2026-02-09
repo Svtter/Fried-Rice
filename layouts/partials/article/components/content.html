@@ -1,8 +1,10 @@
 <section class="article-content">
-    <div class="tts-player">
+    <div class="tts-player" data-audio-url="/tts/{{ .Title }}.mp3">
         <button class="tts-play">▶ 听文章</button>
         <button class="tts-stop">■ 停止</button>
-        <label>语速:
+        <span class="tts-sep"></span>
+        <span class="tts-rate-group">
+            <span class="tts-rate-label">语速</span>
             <select class="tts-rate">
                 <option value="0.75">0.75x</option>
                 <option value="1" selected>1.0x</option>
@@ -10,7 +12,7 @@
                 <option value="1.5">1.5x</option>
                 <option value="2">2.0x</option>
             </select>
-        </label>
+        </span>
         <span class="tts-progress"></span>
     </div>
 
