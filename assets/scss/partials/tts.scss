@@ -1,0 +1,67 @@
+.tts-player {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 0;
+    margin-bottom: 16px;
+    font-size: 1.3rem;
+    color: var(--card-text-color-secondary);
+    border-bottom: 1px solid var(--card-separator-color);
+
+    button {
+        background: none;
+        border: none;
+        padding: 4px 8px;
+        cursor: pointer;
+        font-size: 1.3rem;
+        color: var(--accent-color);
+        border-radius: 4px;
+        transition: background 0.15s;
+        white-space: nowrap;
+
+        &:hover {
+            background: rgba(var(--accent-color-rgb), 0.08);
+        }
+    }
+
+    .tts-sep {
+        width: 1px;
+        height: 14px;
+        background: var(--card-separator-color);
+    }
+
+    .tts-rate-group {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        white-space: nowrap;
+    }
+
+    .tts-rate-label {
+        font-size: 1.2rem;
+    }
+
+    select {
+        -webkit-appearance: none;
+        appearance: none;
+        background: none;
+        border: none;
+        padding: 2px 4px;
+        font-size: 1.2rem;
+        color: var(--accent-color);
+        cursor: pointer;
+        font-weight: 500;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    .tts-progress {
+        margin-left: auto;
+        font-size: 1.2rem;
+        color: var(--card-text-color-tertiary);
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+    }
+}

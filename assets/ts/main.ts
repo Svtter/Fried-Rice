@@ -13,6 +13,7 @@ import createElement from 'ts/createElement';
 import StackColorScheme from 'ts/colorScheme';
 import { setupScrollspy } from 'ts/scrollspy';
 import { setupSmoothAnchors } from "ts/smoothAnchors";
+import { setupTTS } from "ts/tts";
 
 let Stack = {
     init: () => {
@@ -102,6 +103,7 @@ let Stack = {
             new StackGallery(articleContent);
             setupSmoothAnchors();
             setupScrollspy();
+            setupTTS();
         }
 
         /**

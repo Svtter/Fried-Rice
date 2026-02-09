@@ -41,8 +41,11 @@
 @import "partials/layout/404.scss";
 @import "partials/layout/search.scss";
 
-/* 7. Legacy sidebar - kept for backwards compatibility */
+/* 7. TTS player */
+@import "partials/tts.scss";
+
+/* 8. Legacy sidebar - kept for backwards compatibility */
 /* @import "partials/sidebar.scss"; */  /* Disabled: using header now */
 
-/* 8. Custom user overrides */
+/* 9. Custom user overrides */
 @import "custom.scss";
