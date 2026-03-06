@@ -30,6 +30,18 @@ article:
     readingTime:
         other: "阅读时长: {{ .Count }} 分钟"
 
+    newsletter:
+        title:
+            other: "📧 喜欢这篇文章？"
+        description:
+            other: 订阅获取最新文章推送到您的邮箱。
+        emailPlaceholder:
+            other: 输入您的邮箱地址
+        subscriberName:
+            other: 博客订阅者
+        submit:
+            other: 订阅
+
 notFound:
     title:
         other: 404 错误
