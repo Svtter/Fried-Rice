@@ -109,6 +109,10 @@ params:
         license:
             enabled: true
             default: Licensed under CC BY-NC-SA 4.0
+        newsletter:
+            enabled: false
+            formAction: https://listmonk.sun-praise.com/subscription/form
+            listId: 2a31a56c-7fc2-47a5-a6f7-4e6556946ed3
 
     comments:
         enabled: true

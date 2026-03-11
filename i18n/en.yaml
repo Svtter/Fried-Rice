@@ -36,6 +36,18 @@ article:
         one: "{{ .Count }} minute read"
         other: "{{ .Count }} minute read"
 
+    newsletter:
+        title:
+            other: "📧 Enjoyed this article?"
+        description:
+            other: Subscribe to get the latest articles delivered to your inbox.
+        emailPlaceholder:
+            other: Enter your email address
+        subscriberName:
+            other: Blog Subscriber
+        submit:
+            other: Subscribe
+
 notFound:
     title:
         other: Not Found

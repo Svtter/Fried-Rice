@@ -1,0 +1,128 @@
+{{/* Inline newsletter subscription widget for article footer */}}
+{{- if .Site.Params.article.newsletter.enabled -}}
+<section class="newsletter-inline">
+    <div class="newsletter-inline-header">
+        <h3 class="newsletter-inline-title">{{ i18n "article.newsletter.title" }}</h3>
+        <p class="newsletter-inline-desc">{{ i18n "article.newsletter.description" }}</p>
+    </div>
+    <form action="{{ .Site.Params.article.newsletter.formAction | default "https://listmonk.sun-praise.com/subscription/form" }}" method="post" target="_blank" class="newsletter-inline-form">
+        <input type="email" name="email" placeholder="{{ i18n "article.newsletter.emailPlaceholder" }}" required class="newsletter-inline-email">
+        <input type="hidden" name="name" value="{{ i18n "article.newsletter.subscriberName" }}">
+        <input type="hidden" name="l" value="{{ .Site.Params.article.newsletter.listId | default "2a31a56c-7fc2-47a5-a6f7-4e6556946ed3" }}">
+        <button type="submit" class="newsletter-inline-submit">{{ i18n "article.newsletter.submit" }}</button>
+    </form>
+</section>
+
+<style>
+.newsletter-inline {
+    margin: 2rem 0 1rem;
+    padding: 1.5rem 2rem;
+    border: 1px solid var(--card-separator-color);
+    border-radius: var(--card-border-radius);
+    background: var(--card-background);
+    box-shadow: var(--shadow-l1);
+}
+
+.newsletter-inline-header {
+    margin-bottom: 1rem;
+}
+
+.newsletter-inline-title {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--card-text-color-main);
+}
+
+.newsletter-inline-desc {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--card-text-color-secondary);
+}
+
+.newsletter-inline-form {
+    display: flex;
+    gap: 10px;
+}
+
+.newsletter-inline-email {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--card-separator-color);
+    border-radius: 4px;
+    background: var(--body-background);
+    color: var(--body-text-color);
+    font-size: 14px;
+}
+
+.newsletter-inline-email:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(var(--accent-color-rgb), 0.25);
+}
+
+.newsletter-inline-submit {
+    padding: 10px 20px;
+    background: var(--accent-color);
+    color: var(--accent-color-text);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.newsletter-inline-submit:hover {
+    background: var(--accent-color-darker);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.newsletter-inline-submit:active {
+    transform: translateY(0);
+}
+
+/* Dark mode */
+[data-scheme="dark"] .newsletter-inline {
+    background: var(--card-background);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-scheme="dark"] .newsletter-inline-email {
+    background: var(--card-background-selected);
+    border-color: rgba(255, 255, 255, 0.10);
+    color: var(--card-text-color-main);
+}
+
+[data-scheme="dark"] .newsletter-inline-email::placeholder {
+    color: var(--card-text-color-tertiary);
+}
+
+[data-scheme="dark"] .newsletter-inline-email:focus {
+    border-color: rgba(103, 103, 228, 0.55);
+    box-shadow: 0 0 0 6px rgba(103, 103, 228, 0.14);
+}
+
+[data-scheme="dark"] .newsletter-inline-submit {
+    background: linear-gradient(135deg, var(--accent-color), var(--accent-color-darker));
+    box-shadow: 0 4px 15px rgba(103, 103, 228, 0.18);
+}
+
+[data-scheme="dark"] .newsletter-inline-submit:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 6px 20px rgba(103, 103, 228, 0.25);
+}
+
+@media (max-width: 640px) {
+    .newsletter-inline {
+        padding: 1.2rem 1rem;
+    }
+
+    .newsletter-inline-form {
+        flex-direction: column;
+    }
+}
+</style>
+{{- end -}}
