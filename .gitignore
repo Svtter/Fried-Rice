@@ -7,3 +7,5 @@ assets/jsconfig.json
 .playwright-mcp
 
 realBlog
+.serena/
+.serana/
