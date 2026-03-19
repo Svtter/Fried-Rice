@@ -1,49 +1,67 @@
 {{/* Hero section for homepage - v0 inspired */}}
 <section class="hero-section">
     <div class="hero-container">
-        {{/* Main heading - extra large */}}
-        <h1 class="hero-title">{{ .Site.Title | lower }}</h1>
-
-        {{/* Subtitle */}}
-        {{ with .Site.Params.hero.subtitle }}
-        <p class="hero-subtitle">{{ . }}</p>
-        {{ else }}
-        <p class="hero-subtitle">{{ i18n "hero.defaultSubtitle" }}</p>
+        {{ $heroImage := "" }}
+        {{ $heroImageAlt := "" }}
+        {{ with .Site.Params.hero.image }}
+            {{ $heroImage = .url | default . }}
+            {{ $heroImageAlt = .alt | default "Hero visual for technical blog" }}
         {{ end }}
+        <div class="hero-grid {{ if not $heroImage }}hero-grid--no-visual{{ end }}">
+            <div class="hero-main">
+                {{/* Main heading - extra large */}}
+                <h1 class="hero-title">{{ .Site.Title | lower }}</h1>
 
-        {{/* Description */}}
-        {{ with .Site.Params.hero.description }}
-        <p class="hero-description">{{ . }}</p>
-        {{ else }}
-        <p class="hero-description">{{ i18n "hero.defaultDescription" }}</p>
-        {{ end }}
+                {{/* Subtitle */}}
+                {{ with .Site.Params.hero.subtitle }}
+                <p class="hero-subtitle">{{ . }}</p>
+                {{ else }}
+                <p class="hero-subtitle">{{ i18n "hero.defaultSubtitle" }}</p>
+                {{ end }}
 
-        {{/* Topic tags/pills */}}
-        {{ with .Site.Params.hero.topics }}
-        <div class="hero-topics">
-            {{ range . }}
-            <span class="hero-topic-pill">{{ . }}</span>
+                {{/* Description */}}
+                {{ with .Site.Params.hero.description }}
+                <p class="hero-description">{{ . }}</p>
+                {{ else }}
+                <p class="hero-description">{{ i18n "hero.defaultDescription" }}</p>
+                {{ end }}
+            </div>
+
+            {{ with $heroImage }}
+            <figure class="hero-visual">
+                <img src="{{ . }}" alt="{{ $heroImageAlt }}" loading="lazy" decoding="async">
+            </figure>
             {{ end }}
-        </div>
-        {{ else }}
-        <div class="hero-topics">
-            <span class="hero-topic-pill">{{ i18n "hero.defaultTopics.programming" }}</span>
-            <span class="hero-topic-pill">{{ i18n "hero.defaultTopics.machineLearning" }}</span>
-            <span class="hero-topic-pill">{{ i18n "hero.defaultTopics.devTools" }}</span>
-            <span class="hero-topic-pill">{{ i18n "hero.defaultTopics.agentEngineer" }}</span>
-            <span class="hero-topic-pill">{{ i18n "hero.defaultTopics.technicalWriting" }}</span>
-        </div>
-        {{ end }}
 
-        {{/* Newsletter subscription */}}
-        <div class="hero-newsletter">
-            <p class="newsletter-description">{{ i18n "hero.newsletter.description" }}</p>
-            <form action="https://listmonk.sun-praise.com/subscription/form" method="post" target="_blank" class="hero-newsletter-form">
-                <input type="email" name="email" placeholder="{{ i18n "hero.newsletter.emailPlaceholder" }}" required class="newsletter-email">
-                <input type="hidden" name="name" value="{{ i18n "hero.newsletter.subscriberName" }}">
-                <input type="hidden" name="l" value="2a31a56c-7fc2-47a5-a6f7-4e6556946ed3">
-                <button type="submit" class="newsletter-submit">{{ i18n "hero.newsletter.submit" }}</button>
-            </form>
+            <div class="hero-meta">
+                {{/* Topic tags/pills */}}
+                {{ with .Site.Params.hero.topics }}
+                <div class="hero-topics">
+                    {{ range . }}
+                    <span class="hero-topic-pill">{{ . }}</span>
+                    {{ end }}
+                </div>
+                {{ else }}
+                <div class="hero-topics">
+                    <span class="hero-topic-pill">{{ i18n "hero.defaultTopics.programming" }}</span>
+                    <span class="hero-topic-pill">{{ i18n "hero.defaultTopics.machineLearning" }}</span>
+                    <span class="hero-topic-pill">{{ i18n "hero.defaultTopics.devTools" }}</span>
+                    <span class="hero-topic-pill">{{ i18n "hero.defaultTopics.agentEngineer" }}</span>
+                    <span class="hero-topic-pill">{{ i18n "hero.defaultTopics.technicalWriting" }}</span>
+                </div>
+                {{ end }}
+
+                {{/* Newsletter subscription */}}
+                <div class="hero-newsletter">
+                    <p class="newsletter-description">{{ i18n "hero.newsletter.description" }}</p>
+                    <form action="https://listmonk.sun-praise.com/subscription/form" method="post" target="_blank" class="hero-newsletter-form">
+                        <input type="email" name="email" placeholder="{{ i18n "hero.newsletter.emailPlaceholder" }}" required class="newsletter-email">
+                        <input type="hidden" name="name" value="{{ i18n "hero.newsletter.subscriberName" }}">
+                        <input type="hidden" name="l" value="2a31a56c-7fc2-47a5-a6f7-4e6556946ed3">
+                        <button type="submit" class="newsletter-submit">{{ i18n "hero.newsletter.submit" }}</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </section>
