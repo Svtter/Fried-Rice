@@ -4,8 +4,20 @@
         {{ $heroImage := "" }}
         {{ $heroImageAlt := "" }}
         {{ with .Site.Params.hero.image }}
-            {{ $heroImage = .url | default . }}
-            {{ $heroImageAlt = .alt | default "Hero visual for technical blog" }}
+            {{ if reflect.IsMap . }}
+                {{ with index . "url" }}
+                    {{ if eq (printf "%T" .) "string" }}
+                        {{ $heroImage = . }}
+                    {{ end }}
+                {{ end }}
+                {{ with index . "alt" }}
+                    {{ if eq (printf "%T" .) "string" }}
+                        {{ $heroImageAlt = . }}
+                    {{ end }}
+                {{ end }}
+            {{ else if eq (printf "%T" .) "string" }}
+                {{ $heroImage = . }}
+            {{ end }}
         {{ end }}
         <div class="hero-grid {{ if not $heroImage }}hero-grid--no-visual{{ end }}">
             <div class="hero-main">
@@ -29,7 +41,7 @@
 
             {{ with $heroImage }}
             <figure class="hero-visual">
-                <img src="{{ . }}" alt="{{ $heroImageAlt }}" loading="lazy" decoding="async">
+                <img src="{{ . }}" alt="{{ $heroImageAlt }}" loading="eager" fetchpriority="high" decoding="async">
             </figure>
             {{ end }}
 
