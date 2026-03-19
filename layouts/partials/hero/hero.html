@@ -8,6 +8,7 @@
                 {{ with index . "url" }}
                     {{ if eq (printf "%T" .) "string" }}
                         {{ $heroImage = . }}
+                        {{ $heroImageAlt = i18n "hero.defaultImageAlt" }}
                     {{ end }}
                 {{ end }}
                 {{ with index . "alt" }}

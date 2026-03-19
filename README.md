@@ -129,12 +129,12 @@ Or in TOML format:
   alt = "Optional accessible description for the hero visual"
 ```
 
+If `subtitle`, `description`, or `topics` are not set, the theme will use default i18n translations from the `i18n/` directory.
+
 `params.hero.image` supports two shapes:
 
 - String URL: `image: "https://example.com/hero.jpg"` or `image = "https://example.com/hero.jpg"`. This is treated as decorative and renders with an empty `alt`.
-- Object: `{ url, alt }`. Use this when the image needs accessible alternative text.
-
-If these values are not set, the theme will use default i18n translations from the `i18n/` directory.
+- Object: `{ url, alt }`. Use this when the image needs accessible alternative text. If `alt` is omitted, the theme falls back to a localized default alt string.
 
 ### Newsletter Integration (Optional)
 
