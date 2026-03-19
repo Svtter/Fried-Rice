@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.0] - 2026-03-19
+
+### Added
+- Optional hero visual support with a two-column anchor layout on the homepage
+
+### Changed
+- Elevated homepage newsletter hierarchy with a more prominent signup card and refined spacing
+- Updated the example site hero configuration to showcase subtitle, description, topics, and hero image settings
+- Ignore local `.serena/` and `.serana/` workspace artifacts by default
+
 ## [0.6.0] - 2026-03-12
 
 ### Added
