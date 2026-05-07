@@ -238,6 +238,11 @@ params:
         # Available values: auto, light, dark
         default: auto
 
+    adsense:
+        publisher_id: "ca-pub-TEST123456"
+        ad_slot_in_article: "1234567890"
+        paragraph_interval: 3
+
     imageProcessing:
         cover:
             enabled: true
