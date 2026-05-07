@@ -1,1 +1,10 @@
-/* Place your custom SCSS in HUGO_SITE_FOLDER/assets/scss/custom.scss */
+/* Google AdSense in-article ad unit */
+.in-article-ad {
+    margin: 2em 0;
+    text-align: center;
+    min-height: 100px;
+
+    ins {
+        background: transparent;
+    }
+}

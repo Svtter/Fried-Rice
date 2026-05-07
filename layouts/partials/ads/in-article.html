@@ -1,0 +1,10 @@
+{{- $publisherID := site.Params.adsense.publisher_id | default "ca-pub-XXXXXXXXXX" -}}
+{{- $adSlot := site.Params.adsense.ad_slot_in_article | default "XXXXXXXXXX" -}}
+{{- $format := site.Params.adsense.ad_format | default "auto" -}}
+{{- $responsive := site.Params.adsense.ad_responsive | default true -}}
+<div class="in-article-ad" data-adsense-placeholder="true"
+     data-ad-client="{{ $publisherID }}"
+     data-ad-slot="{{ $adSlot }}"
+     data-ad-format="{{ $format }}"
+     {{ if $responsive }}data-full-width-responsive="true"{{ end }}>
+</div>
