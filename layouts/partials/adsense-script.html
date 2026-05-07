@@ -27,7 +27,14 @@
     s.crossOrigin = 'anonymous';
     s.onload = function() {
         loaded = true;
+        clearTimeout(t);
         activatePlaceholders();
+    };
+    s.onerror = function() {
+        clearTimeout(t);
+        document.querySelectorAll('[data-adsense-placeholder]').forEach(function(el) {
+            el.style.display = 'none';
+        });
     };
     // Timeout: if script doesn't load in 4s, hide placeholders
     var t = setTimeout(function() {

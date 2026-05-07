@@ -16,6 +16,7 @@
         <span class="tts-progress"></span>
     </div>
 
+    {{- /* Refer to https://discourse.gohugo.io/t/responsive-tables-in-markdown/10639/5 */ -}}
     {{- $wrappedTable := printf "<div class=\"table-wrapper\">${1}</div>" -}}
     {{- $content := .Content | replaceRE "(<table>(?:.|\n)+?</table>)" $wrappedTable -}}
 
@@ -25,18 +26,18 @@
         {{- $adHTML := partial "ads/in-article.html" . -}}
         {{- /* Split content at </p>, insert ad after every N-th paragraph */ -}}
         {{- $parts := split $content "</p>" -}}
-        {{- $result := "" -}}
+        {{- $partsOut := slice -}}
         {{- range $idx, $part := $parts -}}
             {{- if lt $idx (sub (len $parts) 1) -}}
-                {{- $result = printf "%s%s</p>" $result $part -}}
+                {{- $partsOut = $partsOut | append (printf "%s</p>" $part) -}}
                 {{- if and (gt $interval 0) (eq (mod (add $idx 1) $interval) 0) -}}
-                    {{- $result = printf "%s%s" $result $adHTML -}}
+                    {{- $partsOut = $partsOut | append $adHTML -}}
                 {{- end -}}
             {{- else -}}
-                {{- $result = printf "%s%s" $result $part -}}
+                {{- $partsOut = $partsOut | append $part -}}
             {{- end -}}
         {{- end -}}
-        {{- $content = $result -}}
+        {{- $content = delimit $partsOut "" -}}
     {{- end -}}
 
     {{- $content | safeHTML -}}
