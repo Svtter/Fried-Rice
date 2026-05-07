@@ -29,11 +29,11 @@
         loaded = true;
         activatePlaceholders();
     };
-    // Timeout: if script doesn't load in 4s, remove placeholders
+    // Timeout: if script doesn't load in 4s, hide placeholders
     var t = setTimeout(function() {
         if (!loaded) {
             document.querySelectorAll('[data-adsense-placeholder]').forEach(function(el) {
-                el.remove();
+                el.style.display = 'none';
             });
         }
     }, 4000);
