@@ -176,6 +176,10 @@ hugo --minify --gc
 
 Visit [svtter.cn](https://svtter.cn) to see Fried Rice in action.
 
+## 📝 Version History
+
+See [CHANGELOG.md](./CHANGELOG.md) for details.
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.

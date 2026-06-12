@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.0] - 2026-06-12
+
+### Added
+- Merged upstream hugo-theme-stack v4.0.3 (96 commits)
+- Category link auto-color generation from upstream
+- Pagination jump-to-page dialog from upstream
+- Code block copy button from upstream
+- Artalk comment system support from upstream
+- Comentario comment system support from upstream
+- Cookie consent banner from upstream
+- Markdown alerts support (`> [!NOTE]` etc.) from upstream
+- Responsive image support from upstream
+- PhotoSwipe v5 upgrade from upstream
+- `run.sh` for local HTTPS dev server (Hugo + Caddy + supervisord)
+
+### Changed
+- Upgraded Hugo requirement to >= 0.157 (tested with 0.163.1)
+- CSS variable-based refactoring from upstream
+- `partials/` → `_partials/` directory migration from upstream
+
+### Removed
+- Upstream inline article TOC (kept sidebar TOC style)
+
 ## [0.7.0] - 2026-03-19
 
 ### Added
