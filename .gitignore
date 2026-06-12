@@ -9,3 +9,9 @@ assets/jsconfig.json
 realBlog
 .serena/
 .serana/
+.dev/logs/
+.dev-certs/
+exampleSite/content/
+exampleSite/themes/
+.claude/
+.opencode/

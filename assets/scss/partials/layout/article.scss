@@ -134,77 +134,64 @@
 }
 
 .widget--toc {
-    background-color: var(--card-background);
-    border-radius: var(--card-border-radius);
-    box-shadow: var(--shadow-l1);
+    /* Styles inherited from .widget (including padding) */
     overflow: hidden;
-}
 
-.article-toc {
-    padding: 0 var(--card-padding);
-    margin-top: var(--spacing-lg);
-
-    @include respond(lg) {
-        display: none;
+    ::-webkit-scrollbar-thumb {
+        background-color: var(--card-separator-color);
     }
 
-    details {
-        background-color: var(--card-background);
-        border-radius: var(--card-border-radius);
-        box-shadow: var(--shadow-l2);
+    #TableOfContents {
+        overflow-x: auto;
+        max-height: 70vh;
+        padding: 0 4px;
 
-        #TableOfContents {
-            overflow-x: auto;
-            max-height: 70vh;
-            padding: 0 4px;
+        ol,
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
 
-            ol,
-            ul {
-                margin: 0;
-                padding: 0;
-                list-style: none;
-            }
+        & > ul,
+        & > ol {
+            padding-left: 0;
+        }
 
-            & > ul,
-            & > ol {
-                padding-left: 0;
-            }
+        li {
+            margin: 6px 0;
+            padding: 0;
+            line-height: 1.6;
 
-            li {
-                margin: 6px 0;
-                padding: 0;
-                line-height: 1.6;
+            a {
+                color: var(--card-text-color-main);
+                text-decoration: none;
+                transition: all 0.2s ease;
+                display: block;
+                padding: 6px 12px;
+                border-radius: 6px;
+                font-size: 1.5rem;
+                font-weight: 500;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                white-space: normal;
 
-                a {
-                    color: var(--card-text-color-main);
-                    text-decoration: none;
-                    transition: all 0.2s ease;
-                    display: block;
-                    padding: 6px 12px;
-                    border-radius: 6px;
-                    font-size: 1.5rem;
-                    font-weight: 500;
-                    word-wrap: break-word;
-                    overflow-wrap: break-word;
-                    white-space: normal;
-
-                    &:hover {
-                        color: var(--accent-color);
-                        background-color: rgba(var(--accent-color-rgb), 0.08);
-                        transform: translateX(2px);
-                    }
+                &:hover {
+                    color: var(--accent-color);
+                    background-color: rgba(var(--accent-color-rgb), 0.08);
+                    transform: translateX(2px);
                 }
+            }
 
-                & > ol,
-                & > ul {
-                    margin-top: 6px;
-                    padding-left: 24px;
-                    margin-bottom: 4px;
-                    border-left: 2px solid var(--card-separator-color);
+            & > ol,
+            & > ul {
+                margin-top: 6px;
+                padding-left: 24px;
+                margin-bottom: 4px;
+                border-left: 2px solid var(--card-separator-color);
 
-                    & > li:last-child {
-                        margin-bottom: 0;
-                    }
+                & > li:last-child {
+                    margin-bottom: 0;
                 }
 
                 li a {
@@ -230,49 +217,6 @@
             font-weight: 600;
             border-left: 3px solid var(--accent-color);
             padding-left: 9px;
-        }
-
-        &[open] {
-            .article-toc-title {
-                svg {
-                    transform: rotate(90deg);
-                }
-            }
-        }
-
-        summary {
-            list-style: none;
-            padding: var(--spacing-md) var(--spacing-lg);
-            cursor: pointer;
-
-            &::-webkit-details-marker {
-                display: none;
-            }
-
-            .article-toc-title {
-                display: flex;
-                align-items: center;
-                gap: var(--spacing-sm);
-                text-transform: uppercase;
-                font-size: 1.4rem;
-                font-weight: bold;
-                color: var(--card-text-color-tertiary);
-                display: flex;
-                align-items: center;
-                gap: var(--spacing-sm);
-                text-transform: uppercase;
-                font-size: 1.4rem;
-                font-weight: bold;
-                color: var(--card-text-color-tertiary);
->>>>>>> upstream/master
-
-                svg {
-                    width: 20px;
-                    height: 20px;
-                    stroke-width: 1.33;
-                    transition: transform 0.3s ease;
-                }
-            }
         }
     }
 }

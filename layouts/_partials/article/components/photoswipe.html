@@ -1,9 +1,9 @@
 {{- $opts := dict "minify" hugo.IsProduction "format" "esm" -}}
 {{- $galleryScript := resources.Get "ts/gallery.ts" | js.Build $opts -}}
 
-{{ $style := hugo.Data.external.PhotoSwipe.Style }}
-{{ $core := hugo.Data.external.PhotoSwipe.Core }}
-{{ $lightbox := hugo.Data.external.PhotoSwipe.Lightbox }}
+{{ $style := site.Data.external.PhotoSwipe.Style }}
+{{ $core := site.Data.external.PhotoSwipe.Core }}
+{{ $lightbox := site.Data.external.PhotoSwipe.Lightbox }}
 
 <script type="module">
     import gallery from '{{ $galleryScript.RelPermalink }}';

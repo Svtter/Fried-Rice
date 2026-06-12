@@ -36,6 +36,12 @@ article:
         one: "{{ .Count }} minute read"
         other: "{{ .Count }} minute read"
 
+    codeblock:
+        copy:
+            other: Copy
+        copied:
+            other: Copied!
+
     newsletter:
         title:
             other: "📧 Enjoyed this article?"

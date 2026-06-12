@@ -104,7 +104,6 @@ let Stack = {
         if (articleContent) {
             setupSmoothAnchors();
             setupScrollspy();
-<<<<<<< HEAD
             setupTTS();
             setupCodeCopy();
         }

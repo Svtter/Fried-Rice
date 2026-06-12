@@ -1,0 +1,24 @@
+{{ define "main" }}
+    {{ partial "hero/hero.html" . }}
+
+    {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
+    {{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
+    {{ $filtered := ($pages | intersect $notHidden) }}
+    {{ $pag := .Paginate ($filtered) }}
+
+    {{/* Article list section header */}}
+    <div class="article-list-header">
+        <h2 class="section-title">{{ T "home.latestPosts" }}</h2>
+        <a href="{{ "archives" | relLangURL }}" class="view-all-link">
+            {{ T "home.viewAll" }} →
+        </a>
+    </div>
+
+    <section class="article-list">
+        {{ range $index, $element := $pag.Pages }}
+            {{ partial "article-list/default" . }}
+        {{ end }}
+    </section>
+
+    {{- partial "pagination.html" . -}}
+{{ end }}
