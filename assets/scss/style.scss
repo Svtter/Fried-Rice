@@ -11,8 +11,9 @@
 
 /* 1. Core foundation */
 @import "breakpoints.scss";
-@import "variables.scss";  /* Updated with v0 colors */
-@import "grid.scss";  /* Simplified layout */
+@import "variables.scss";
+@import "mixins.scss";
+@import "grid.scss";
 
 /* 2. External dependencies */
 @import "external/normalize.scss";
@@ -40,6 +41,7 @@
 @import "partials/layout/list.scss";
 @import "partials/layout/404.scss";
 @import "partials/layout/search.scss";
+@import "partials/cookies.scss";
 
 /* 7. TTS player */
 @import "partials/tts.scss";

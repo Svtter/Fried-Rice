@@ -1,0 +1,20 @@
+{{- $ThemeVersion := "4.0.3" -}}
+<footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        {{ if and (.Site.Params.footer.since) (ne .Site.Params.footer.since (int (now.Format "2006"))) }}
+            {{ .Site.Params.footer.since }} - 
+        {{ end }}
+        {{ now.Format "2006" }} {{ default .Site.Title .Site.Copyright }}
+    </section>
+    
+    <section class="powerby">
+        {{ with .Site.Params.footer.customText }}
+            {{ . | safeHTML }} <br/>
+        {{ end }}
+
+        {{- $designedByLink := `<a href="https://svtter.cn" target="_blank" rel="noopener">svtter</a>` -}}
+        {{ T "footer.designedBy" (dict "Theme" "<b>Fried Rice</b>" "DesignedBy" $designedByLink) | safeHTML }} <br />
+        {{ T "footer.sourceCode" (dict "GitHub" `<a href="https://github.com/Svtter/Fried-Rice" target="_blank" rel="noopener">GitHub</a>`) | safeHTML }}
+    </section>
+</footer>
