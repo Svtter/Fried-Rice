@@ -1,6 +1,3 @@
-$defaultTagBackgrounds: #8ea885, #df7988, #0177b8, #ffb900, #6b69d6;
-$defaultTagColors: #fff, #fff, #fff, #fff, #fff;
-
 /*
 *   Global style
 */
@@ -27,41 +24,28 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 
     --section-separation: 48px;  /* More generous spacing like v0 */
 
-    --scrollbar-thumb: hsl(0, 0%, 85%);
-    --scrollbar-track: var(--body-background);
-
     &[data-scheme="dark"] {
-        // 背景 / 表面 (三层体系)
         --body-background: #0F1117;
         --body-background-rgb: 15, 17, 23;
-        
-        // 表面层级
-        --card-background: #151A23;           // surface-1
+
+        --card-background: #151A23;
         --card-background-rgb: 21, 26, 35;
-        --card-background-selected: #1B2230;  // surface-2
-        
-        // 边框 (白色低透明度)
+        --card-background-selected: #1B2230;
+
         --card-separator-color: rgba(255, 255, 255, 0.10);
         --card-separator-color-rgb: 255, 255, 255;
-        
-        // 文本三档
-        --body-text-color: #F2F4F8;           // text-1
-        --card-text-color-main: #F2F4F8;      // text-1
-        --card-text-color-secondary: #C7CEDA; // text-2
-        --card-text-color-tertiary: #8E97A8;  // text-3
-        
-        // 强调色
+
+        --body-text-color: #F2F4F8;
+        --card-text-color-main: #F2F4F8;
+        --card-text-color-secondary: #C7CEDA;
+        --card-text-color-tertiary: #8E97A8;
+
         --accent-color: #6767E4;
         --accent-color-rgb: 103, 103, 228;
-        --accent-color-darker: #8B5CF6;       // 用于渐变第二色
+        --accent-color-darker: #8B5CF6;
         --accent-color-text: #FFFFFF;
-        
-        // 新增：强调色背景 (用于 hover 状态)
+
         --accent-bg: rgba(103, 103, 228, 0.12);
-        
-        // 滚动条
-        --scrollbar-thumb: rgba(255, 255, 255, 0.15);
-        --scrollbar-track: var(--body-background);
     }
 }
 
@@ -160,12 +144,20 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 
     --heading-border-size: 4px;
 
+    --alert-note-color: #4da3ff;
+    --alert-note-background: rgba(77, 163, 255, 0.08);
+    --alert-tip-color: #3fb950;
+    --alert-tip-background: rgba(63, 185, 80, 0.08);
+    --alert-important-color: #8457d9;
+    --alert-important-background: rgba(130, 80, 223, 0.08);
+    --alert-warning-color: #d29922;
+    --alert-warning-background: rgba(210, 153, 34, 0.1);
+    --alert-caution-color: #f85149;
+    --alert-caution-background: rgba(248, 81, 73, 0.1);
+
     --link-background-color: 189, 195, 199;
     --link-background-opacity: 0.5;
     --link-background-opacity-hover: 0.7;
-
-    --pre-background-color: #272822;
-    --pre-text-color: #f8f8f2;
 
     --code-background-color: rgba(0, 0, 0, 0.12);
     --code-text-color: #808080;
@@ -191,11 +183,13 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 *   Thanks to https://www.figma.com/community/plugin/744987207861965946/Shadow-picker
 */
 :root {
-    --shadow-l1: 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 0px 1px rgba(0, 0, 0, 0.04);
-    --shadow-l2: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
-    --shadow-l3: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
-    --shadow-l4: 0px 24px 32px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
-        0px 0px 1px rgba(0, 0, 0, 0.04);
+    --shadow-l1-y: 4px;
+    --shadow-l1-blur: 8px;
+    --shadow-l2-y: 10px;
+    --shadow-l2-blur: 20px;
+
+    --shadow-l1: 0px var(--shadow-l1-y) var(--shadow-l1-blur) rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    --shadow-l2: 0px var(--shadow-l2-y) var(--shadow-l2-blur) rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
 }
 
 [data-scheme="light"] {
@@ -218,5 +212,66 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 :root {
     --menu-icon-separation: 40px;
     --container-padding: 15px;
+
+    @include respond(md) {
+        --container-padding: 20px;
+    }
+
     --widget-separation: var(--section-separation);
+
+    /* Spacing tokens */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 15px;
+    --spacing-lg: 20px;
+    --spacing-xl: 25px;
+    --spacing-2xl: 30px;
+    --spacing-3xl: 40px;
+
+    /* Article image height variables */
+    --article-image-height: 150px;
+
+    @include respond(md) {
+        --article-image-height: 200px;
+    }
+
+    @include respond(xl) {
+        --article-image-height: 250px;
+    }
+
+    /* Mermaid component variables */
+    --mermaid-toolbar-btn-bg: rgba(255, 255, 255, 0.95);
+    --mermaid-toolbar-btn-text: #333;
+    --mermaid-modal-bg: rgba(0, 0, 0, 0.95);
+    --mermaid-modal-content-bg: #fff;
+    --mermaid-modal-btn-bg: #fff;
+    --mermaid-modal-btn-hover: #ddd;
+
+    &[data-scheme="dark"] {
+        --mermaid-toolbar-btn-bg: rgba(0, 0, 0, 0.85);
+        --mermaid-toolbar-btn-text: #eee;
+        --mermaid-modal-content-bg: #1e1e1e;
+        --mermaid-modal-btn-bg: #333;
+        --mermaid-modal-btn-hover: #444;
+    }
+
+    /* Article compact image size */
+    --article-compact-image-size: 50px;
+
+    @include respond(md) {
+        --article-compact-image-size: 60px;
+    }
+
+    /* Widget icon size */
+    --widget-icon-size: 32px;
+
+    /* Article list tile variables */
+    --article-tile-width: 250px;
+    --article-tile-height: 150px;
+    --article-tile-overlay-bg: rgba(0, 0, 0, 0.25);
+    --article-tile-text-color: #fff;
+
+    &[data-scheme="dark"] {
+        --article-tile-overlay-bg: rgba(0, 0, 0, 0.45);
+    }
 }

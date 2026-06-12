@@ -11,13 +11,31 @@
     flex-direction: column;
     flex-shrink: 0;
     align-self: stretch;
-    gap: var(--sidebar-element-separation);
+
+    @include respond(md) {
+        gap: var(--sidebar-element-separation);
+    }
+
+    margin-bottom: calc(-1 * var(--sidebar-element-separation));
+
+    @include respond(md) {
+        margin-bottom: 0;
+    }
+
+    &> :not(:last-child) {
+        margin-bottom: var(--sidebar-element-separation);
+
+        @include respond(md) {
+            margin-bottom: 0;
+        }
+    }
+
     max-width: none;
     width: 100%;
     position: relative;
 
     --sidebar-avatar-size: 100px;
-    --sidebar-element-separation: 20px;
+    --sidebar-element-separation: var(--spacing-lg);
     --emoji-size: 40px;
     --emoji-font-size: 20px;
 
@@ -30,7 +48,7 @@
 
     @include respond(2xl) {
         --sidebar-avatar-size: 120px;
-        --sidebar-element-separation: 25px;
+        --sidebar-element-separation: var(--spacing-xl);
         --emoji-size: 40px;
     }
 
@@ -49,7 +67,7 @@
             }
 
             .site-meta {
-                gap: 5px;
+                gap: var(--spacing-xs);
             }
 
             .site-name {
@@ -126,7 +144,7 @@
     .site-meta {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: var(--spacing-sm);
         justify-content: center;
     }
 
@@ -188,8 +206,19 @@
 
     select {
         border: 0;
-        background-color: transparent;
+        background: none !important;
         color: var(--body-text-color);
+        padding: 0 !important;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: inherit;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+
+        &::-ms-expand {
+            display: none;
+        }
 
         option {
             color: var(--card-text-color-main);

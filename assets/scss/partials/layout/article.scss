@@ -43,43 +43,94 @@
 
         .article-footer {
             margin: var(--card-padding);
-            margin-top: 0;
+            gap: var(--spacing-2xl);
+        }
+    }
+}
 
-            section:not(:first-child) {
-                margin-top: var(--card-padding);
-            }
+.toc-nav {
+    overflow-x: auto;
+    max-height: 75vh;
 
-            section {
-                color: var(--card-text-color-tertiary);
-                text-transform: uppercase;
-                display: flex;
-                align-items: center;
-                font-size: 1.4rem;
-                gap: 15px;
+    ol,
+    ul {
+        margin: 0;
+        padding: 0;
+    }
 
-                svg {
-                    width: 20px;
-                    height: 20px;
-                    stroke-width: 1.33;
-                }
-            }
+    ol {
+        list-style-type: none;
+        counter-reset: item;
 
-            .article-tags {
-                text-transform: unset;
-            }
+        li a:first-of-type::before {
+            counter-increment: item;
+            content: counters(item, ".") ". ";
+            font-weight: bold;
+            margin-right: 5px;
+        }
+    }
 
-            .article-copyright,
-            .article-lastmod {
-                a {
-                    color: var(--body-text-color);
-                }
+    &>ul {
+        padding: 0 1em;
+    }
 
-                a.link {
-                    box-shadow: unset;
-                }
+    li {
+        margin: var(--spacing-md) 0 var(--spacing-md) var(--spacing-lg);
+        padding: var(--spacing-xs);
+
+        &>ol,
+        &>ul {
+            margin-top: var(--spacing-sm);
+            padding-left: var(--spacing-sm);
+            margin-bottom: calc(var(--spacing-xs) * -1);
+
+            &>li:last-child {
+                margin-bottom: 0;
             }
         }
     }
+
+    li.active-class>a {
+        border-left: var(--heading-border-size) solid var(--accent-color);
+        font-weight: bold;
+    }
+
+    ul li.active-class>a {
+        display: block;
+    }
+
+    @function repeat($str, $n) {
+        $result: "";
+
+        @for $_ from 0 to $n {
+            $result: $result + $str;
+        }
+
+        @return $result;
+    }
+
+    // Support up to 6 levels of indentation for lists in ToCs
+    @for $i from 0 to 5 {
+        &>ul #{repeat("> li > ul", $i)}>li.active-class>a {
+            $n: 25 + $i * 35;
+            margin-left: calc(-#{$n}px - 1em);
+            padding-left: calc(#{$n}px + 1em - var(--heading-border-size));
+        }
+
+        &>ol #{repeat("> li > ol", $i)}>li.active-class>a {
+            $n: 9 + $i * 35;
+            margin-left: calc(-#{$n}px - 1em);
+            padding-left: calc(#{$n}px + 1em - var(--heading-border-size));
+            display: block;
+        }
+    }
+}
+
+.widget--toc,
+.article-toc {
+    display: flex;
+    flex-direction: column;
+    color: var(--card-text-color-main);
 }
 
 .widget--toc {
@@ -93,7 +144,7 @@
     #TableOfContents {
         overflow-x: auto;
         max-height: 70vh;
-        padding: 0 4px;  /* Small horizontal padding to prevent text clipping */
+        padding: 0 4px;
 
         ol,
         ul {
@@ -150,7 +201,6 @@
                 }
             }
 
-            /* Third level and deeper */
             & > ol > li > ol,
             & > ul > li > ul {
                 padding-left: 20px;
@@ -166,36 +216,7 @@
             background-color: rgba(var(--accent-color-rgb), 0.1);
             font-weight: 600;
             border-left: 3px solid var(--accent-color);
-            padding-left: 9px;  /* 12px - 3px border */
-        }
-    }
-}
-
-.related-content {
-    overflow-x: auto;
-    padding-bottom: 15px;
-
-    & > .flex {
-        float: left;
-    }
-
-    article {
-        margin-right: 15px;
-        flex-shrink: 0;
-        overflow: hidden;
-        width: 250px;
-        height: 150px;
-
-        .article-title {
-            font-size: 1.8rem;
-            margin: 0;
-        }
-
-        &.has-image {
-            .article-details {
-                padding: 20px;
-                background: linear-gradient(0deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.75) 100%);
-            }
+            padding-left: 9px;
         }
     }
 }
@@ -206,7 +227,7 @@
     padding: 0 var(--card-padding);
     line-height: var(--article-line-height);
 
-    & > p {
+    &>p {
         margin: 1.5em 0;
     }
 
@@ -257,7 +278,7 @@
         position: relative;
         margin: 1.5em 0;
         border-inline-start: var(--blockquote-border-size) solid var(--card-separator-color);
-        padding: 15px calc(var(--card-padding) - var(--blockquote-border-size));
+        padding: var(--spacing-md) calc(var(--card-padding) - var(--blockquote-border-size));
         background-color: var(--blockquote-background-color);
 
         .cite {
@@ -267,6 +288,34 @@
 
             a {
                 text-decoration: underline;
+            }
+        }
+    }
+
+    blockquote.alert {
+        .alert-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+            font-weight: bold;
+        }
+
+        .alert-body {
+            > :last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        $alert-types: note, tip, important, warning, caution;
+
+        @each $type in $alert-types {
+            &.alert-#{$type} {
+                border-color: var(--alert-#{$type}-color);
+                background-color: var(--alert-#{$type}-background);
+
+                .alert-title {
+                    color: var(--alert-#{$type}-color);
+                }
             }
         }
     }
@@ -299,7 +348,7 @@
         flex-direction: row;
         justify-content: center;
         margin: 1.5em 0;
-        gap: 10px;
+        gap: var(--spacing-sm);
 
         figure {
             margin: 0;
@@ -315,10 +364,12 @@
         line-height: 1.428571429;
         word-break: break-all;
         padding: var(--card-padding);
+
         //  keep Codeblocks LTR
         [dir="rtl"] & {
             direction: ltr;
         }
+
         code {
             color: unset;
             border: none;
@@ -332,17 +383,22 @@
         padding: var(--card-padding);
         position: relative;
 
+        pre {
+            background-color: transparent;
+        }
+
         &:hover {
             .copyCodeButton {
                 opacity: 1;
             }
         }
+
         // keep Codeblocks LTR
         [dir="rtl"] & {
             direction: ltr;
         }
+
         pre {
-            margin: initial;
             padding: 0;
             margin: 0;
             width: auto;
@@ -405,8 +461,8 @@
         padding-bottom: 56.25%;
         overflow: hidden;
 
-        & > iframe,
-        & > video {
+        &>iframe,
+        &>video {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -443,7 +499,7 @@
     }
 
     /// Make long KaTeX equations scrollable in the x-axis
-    .katex-display > .katex {
+    .katex-display>.katex {
         overflow-x: auto;
         overflow-y: hidden;
     }

@@ -30,6 +30,12 @@ article:
     readingTime:
         other: "阅读时长: {{ .Count }} 分钟"
 
+    codeblock:
+        copy:
+            other: 复制
+        copied:
+            other: 已复制!
+
     newsletter:
         title:
             other: "📧 喜欢这篇文章？"

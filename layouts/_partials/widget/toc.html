@@ -1,0 +1,12 @@
+{{ if (.Context.Scratch.Get "TOCEnabled") }}
+    <section class="widget widget--toc">
+        <h2 class="widget-title">
+            {{ partial "helper/icon" "hash" }}
+            <span>目录</span>
+        </h2>
+
+        <div id="TableOfContents">
+            {{ .Context.TableOfContents }}
+        </div>
+    </section>
+{{ end }}
