@@ -178,32 +178,7 @@ Visit [svtter.cn](https://svtter.cn) to see Fried Rice in action.
 
 ## 📝 Version History
 
-- **v0.4.1** (2026-01-25)
-  - Fix article tag visibility in dark mode
-
-- **v0.4.0** (2026-01-20)
-  - Dark mode redesign with three-layer surface system and accent glow effects
-  - Updated Chinese fonts to Noto Sans SC and LXGW WenKai Screen
-  - Added AI agent workflow configuration (OpenSpec framework)
-
-- **v0.3.3** (2025-12-30)
-  - Configurable hero section parameters for customization
-  - Updated default subtitle and hero topic to Agent Engineer
-
-- **v0.3.0** (2025-12-26)
-  - Language switcher button for EN/ZH language switching
-  - i18n translations for footer and hero sections
-
-- **v0.2.0** (2025-12-23)
-  - WebSite, Organization, and FAQ schema for better SEO
-  - Article/BlogPosting schema enhancements with accessibility metadata
-
-- **v0.1.0** (2025-12-21)
-  - Initial fork from hugo-theme-stack
-  - Table of contents sidebar for article pages
-  - SEO optimizations with JSON-LD structured data
-  - RSS icon and newsletter integration
-  - Updated pagination style
+See [CHANGELOG.md](./CHANGELOG.md) for details.
 
 ## 🤝 Contributing
 
