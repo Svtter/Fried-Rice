@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.1] - 2026-06-13
+
+### Fixed
+- Homepage article-list cards no longer rendered cover images after v0.8.0's `helper/image` contract rewrite — the custom card now passes `Image`/`Resources` and reads `Resource`/`Permalink` instead of the removed `exists` field (#28, #29)
+- Aligned the shadowed `_default/list.html` to the same `helper/image` contract (latent; it was overridden by `layouts/list.html`)
+
+### Changed
+- Homepage card category pills now use per-category auto-coloring via `helper/color-from-str`, matching the upstream `_partials` card
+
 ## [0.8.0] - 2026-06-12
 
 ### Added
