@@ -17,16 +17,16 @@
                 {{ end }}
             </div>
     
-            {{- $image := partialCached "helper/image" (dict "Context" . "Type" "section") .RelPermalink "section" -}}
-            {{ if $image.exists }}
+            {{- $image := partialCached "helper/image" (dict "Image" .Params.image "Resources" .Resources "Context" .) .RelPermalink "section" -}}
+            {{ if $image }}
                 <div class="section-image">
-                    {{ if $image.resource }}
-                        {{- $Permalink := $image.resource.RelPermalink -}}
-                        {{- $Width := $image.resource.Width -}}
-                        {{- $Height := $image.resource.Height -}}
+                    {{ if $image.Resource }}
+                        {{- $Permalink := $image.Resource.RelPermalink -}}
+                        {{- $Width := $image.Resource.Width -}}
+                        {{- $Height := $image.Resource.Height -}}
     
                         {{- if (default true .Page.Site.Params.imageProcessing.cover.enabled) -}}
-                            {{- $thumbnail := $image.resource.Fill "120x120" -}}
+                            {{- $thumbnail := $image.Resource.Fill "120x120" -}}
                             {{- $Permalink = $thumbnail.RelPermalink -}}
                             {{- $Width = $thumbnail.Width -}}
                             {{- $Height = $thumbnail.Height -}}
@@ -37,7 +37,7 @@
                             height="{{ $Height }}" 
                             loading="lazy">
                     {{ else }}
-                        <img src="{{ $image.permalink }}" loading="lazy" />
+                        <img src="{{ $image.Permalink }}" loading="lazy" />
                     {{ end }}
                 </div>
             {{ end }}
