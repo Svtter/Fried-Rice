@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.2] - 2026-06-14
+
+### Fixed
+- SVG and other non-processable cover images (e.g. `image/svg+xml` page-bundle resources) no longer abort the whole site build. `article-list/default.html` and the shadowed `_default/list.html` now guard `.Fill` with `reflect.IsImageResourceProcessable`, falling back to the original image — matching `article-list/tile.html` and `helper/thumbnail-image` (#30, #31)
+
+### Added
+- `exampleSite` SVG cover demo post, plus a project-level `article-list/default.html` override so the example site renders the custom rich card (`partials/`) instead of the upstream minimal card
+
 ## [0.8.1] - 2026-06-13
 
 ### Fixed
