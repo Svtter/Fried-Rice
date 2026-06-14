@@ -10,6 +10,7 @@ realBlog
 .serena/
 .serana/
 .dev/logs/
+.dev/Caddyfile
 .dev-certs/
 # exampleSite demo content is local-only — except the SVG cover regression fixture (#30)
 exampleSite/content/*
