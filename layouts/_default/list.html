@@ -25,7 +25,7 @@
                         {{- $Width := $image.Resource.Width -}}
                         {{- $Height := $image.Resource.Height -}}
     
-                        {{- if (default true .Page.Site.Params.imageProcessing.cover.enabled) -}}
+                        {{- if and (default true .Page.Site.Params.imageProcessing.cover.enabled) (reflect.IsImageResourceProcessable $image.Resource) -}}
                             {{- $thumbnail := $image.Resource.Fill "120x120" -}}
                             {{- $Permalink = $thumbnail.RelPermalink -}}
                             {{- $Width = $thumbnail.Width -}}

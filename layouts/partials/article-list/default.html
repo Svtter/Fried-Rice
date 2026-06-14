@@ -15,7 +15,7 @@
         {{ if $image }}
         <div class="article-image">
             {{ if $image.Resource }}
-                {{- if (default true .Page.Site.Params.imageProcessing.cover.enabled) -}}
+                {{- if and (default true .Page.Site.Params.imageProcessing.cover.enabled) (reflect.IsImageResourceProcessable $image.Resource) -}}
                     {{- $thumbnail := $image.Resource.Fill "600x400" -}}
                     <img src="{{ $thumbnail.RelPermalink }}"
                          width="{{ $thumbnail.Width }}"
