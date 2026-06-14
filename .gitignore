@@ -11,7 +11,11 @@ realBlog
 .serana/
 .dev/logs/
 .dev-certs/
-exampleSite/content/
+# exampleSite demo content is local-only — except the SVG cover regression fixture (#30)
+exampleSite/content/*
+!exampleSite/content/post/
+exampleSite/content/post/*
+!exampleSite/content/post/svg-cover-test/
 exampleSite/themes/
 .claude/
 .opencode/
