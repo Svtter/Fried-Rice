@@ -14,14 +14,16 @@
 {{- with .Site.Params.seo.organization.sameAs -}}
     {{- $sameAs = . -}}
 {{- else -}}
-    {{- with .Site.Author.github -}}
-        {{- $sameAs = $sameAs | append (printf "https://github.com/%s" .) -}}
-    {{- end -}}
-    {{- with .Site.Author.twitter -}}
-        {{- $sameAs = $sameAs | append (printf "https://twitter.com/%s" .) -}}
-    {{- end -}}
-    {{- with .Site.Author.linkedin -}}
-        {{- $sameAs = $sameAs | append (printf "https://linkedin.com/in/%s" .) -}}
+    {{- with .Site.Author -}}
+        {{- with .github -}}
+            {{- $sameAs = $sameAs | append (printf "https://github.com/%s" .) -}}
+        {{- end -}}
+        {{- with .twitter -}}
+            {{- $sameAs = $sameAs | append (printf "https://twitter.com/%s" .) -}}
+        {{- end -}}
+        {{- with .linkedin -}}
+            {{- $sameAs = $sameAs | append (printf "https://linkedin.com/in/%s" .) -}}
+        {{- end -}}
     {{- end -}}
 {{- end -}}
 
@@ -37,15 +39,17 @@
 {{- end -}}
 
 {{- /* Add founder if author info exists */ -}}
-{{- if or .Site.Author.name .Site.Author.homepage -}}
-    {{- $founder := dict "@type" "Person" -}}
-    {{- with .Site.Author.name -}}
-        {{- $founder = merge $founder (dict "name" .) -}}
+{{- with .Site.Author -}}
+    {{- if or .name .homepage -}}
+        {{- $founder := dict "@type" "Person" -}}
+        {{- with .name -}}
+            {{- $founder = merge $founder (dict "name" .) -}}
+        {{- end -}}
+        {{- with .homepage -}}
+            {{- $founder = merge $founder (dict "url" (. | absURL)) -}}
+        {{- end -}}
+        {{- $schema = merge $schema (dict "founder" $founder) -}}
     {{- end -}}
-    {{- with .Site.Author.homepage -}}
-        {{- $founder = merge $founder (dict "url" (. | absURL)) -}}
-    {{- end -}}
-    {{- $schema = merge $schema (dict "founder" $founder) -}}
 {{- end -}}
 
 {{- /* Add sameAs */ -}}

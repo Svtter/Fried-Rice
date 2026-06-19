@@ -9,12 +9,20 @@
     {{- end -}}
 {{- end -}}
 
-{{- $authorName := .Site.Author.name | default .Site.Title -}}
-{{- $authorURL := .Site.Author.homepage | default .Site.BaseURL -}}
+{{- $authorName := .Site.Title -}}
+{{- $authorURL := .Site.BaseURL -}}
 {{- $authorImage := "" -}}
-{{- with .Site.Author.image }}
-    {{- $authorImage = . | absURL -}}
-{{- end }}
+{{- with .Site.Author -}}
+    {{- with .name -}}
+        {{- $authorName = . -}}
+    {{- end -}}
+    {{- with .homepage -}}
+        {{- $authorURL = . -}}
+    {{- end -}}
+    {{- with .image -}}
+        {{- $authorImage = . | absURL -}}
+    {{- end -}}
+{{- end -}}
 
 {{- $keywords := slice -}}
 {{- with .Params.tags }}{{ $keywords = $keywords | append . }}{{ end -}}
