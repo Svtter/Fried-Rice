@@ -9,10 +9,12 @@
     {{- end -}}
 {{- end -}}
 
+{{- $author := .Site.Params.author | default dict -}}
+
 {{- $authorName := .Site.Title -}}
 {{- $authorURL := .Site.BaseURL -}}
 {{- $authorImage := "" -}}
-{{- with .Site.Author -}}
+{{- with $author -}}
     {{- with .name -}}
         {{- $authorName = . -}}
     {{- end -}}
@@ -61,16 +63,16 @@
 
 {{- /* Collect author social links */ -}}
 {{- $authorSameAs := slice -}}
-{{- with .Site.Author.github -}}
+{{- with $author.github -}}
     {{- $authorSameAs = $authorSameAs | append (printf "https://github.com/%s" .) -}}
 {{- end -}}
-{{- with .Site.Author.twitter -}}
+{{- with $author.twitter -}}
     {{- $authorSameAs = $authorSameAs | append (printf "https://twitter.com/%s" .) -}}
 {{- end -}}
-{{- with .Site.Author.linkedin -}}
+{{- with $author.linkedin -}}
     {{- $authorSameAs = $authorSameAs | append (printf "https://linkedin.com/in/%s" .) -}}
 {{- end -}}
-{{- with .Site.Author.website -}}
+{{- with $author.website -}}
     {{- $authorSameAs = $authorSameAs | append . -}}
 {{- end -}}
 
