@@ -9,12 +9,7 @@
 <meta name="twitter:title" {{ printf "content=%q" $title | safeHTMLAttr }}>
 <meta name="twitter:description" {{ printf "content=%q" $description | safeHTMLAttr }}>
 
-{{- $imageParam := .Params.image -}}
-{{- if not $imageParam -}}
-    {{- with .Params.cover.image -}}
-        {{- $imageParam = . -}}
-    {{- end -}}
-{{- end -}}
+{{- $imageParam := partial "head/opengraph/image-param" . -}}
 {{- $image := partial "helper/image" (dict "Image" $imageParam "Resources" .Resources "Context" .) -}}
 {{- if $image -}}
     <meta name="twitter:card" content="{{ .Site.Params.opengraph.twitter.card }}">

@@ -37,13 +37,8 @@
     {{- end -}}
 {{- end -}}
 
-{{ $imageParam := .Params.image }}
-{{ if not $imageParam }}
-    {{ with .Params.cover.image }}
-        {{ $imageParam = . }}
-    {{ end }}
-{{ end }}
-{{ $image := partial "helper/image" (dict "Image" $imageParam "Resources" .Resources "Context" .) }}
+{{- $imageParam := partial "head/opengraph/image-param" . -}}
+{{- $image := partial "helper/image" (dict "Image" $imageParam "Resources" .Resources "Context" .) -}}
 {{- if $image -}}
     <meta property='og:image' content='{{ absURL $image.Permalink }}' />
 {{- end -}}
