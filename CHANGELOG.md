@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.3] - 2026-06-22
+
+### Fixed
+- Restore SEO structured data (JSON-LD) and performance hints (preconnect/dns-prefetch) that were accidentally removed in v0.8.0 (#35)
+- Restore OpenGraph/Twitter card image fallback to `.Params.cover.image` when `.Params.image` is not set (#35)
+- Migrate deprecated `.Site.Author` references to `.Site.Params.author` in structured data templates (#35)
+
+### Changed
+- Ignore `.ralphplus/` workspace artifacts and generated `.dev/Caddyfile` in git (#34)
+
 ## [0.8.2] - 2026-06-14
 
 ### Fixed
