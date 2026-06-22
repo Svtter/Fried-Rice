@@ -9,12 +9,22 @@
     {{- end -}}
 {{- end -}}
 
-{{- $authorName := .Site.Author.name | default .Site.Title -}}
-{{- $authorURL := .Site.Author.homepage | default .Site.BaseURL -}}
+{{- $authorParams := .Site.Params.author | default dict -}}
+
+{{- $authorName := .Site.Title -}}
+{{- $authorURL := .Site.BaseURL -}}
 {{- $authorImage := "" -}}
-{{- with .Site.Author.image }}
-    {{- $authorImage = . | absURL -}}
-{{- end }}
+{{- with $authorParams -}}
+    {{- with .name -}}
+        {{- $authorName = . -}}
+    {{- end -}}
+    {{- with .homepage -}}
+        {{- $authorURL = . -}}
+    {{- end -}}
+    {{- with .image -}}
+        {{- $authorImage = . | absURL -}}
+    {{- end -}}
+{{- end -}}
 
 {{- $keywords := slice -}}
 {{- with .Params.tags }}{{ $keywords = $keywords | append . }}{{ end -}}
@@ -53,16 +63,16 @@
 
 {{- /* Collect author social links */ -}}
 {{- $authorSameAs := slice -}}
-{{- with .Site.Author.github -}}
+{{- with $authorParams.github -}}
     {{- $authorSameAs = $authorSameAs | append (printf "https://github.com/%s" .) -}}
 {{- end -}}
-{{- with .Site.Author.twitter -}}
+{{- with $authorParams.twitter -}}
     {{- $authorSameAs = $authorSameAs | append (printf "https://twitter.com/%s" .) -}}
 {{- end -}}
-{{- with .Site.Author.linkedin -}}
+{{- with $authorParams.linkedin -}}
     {{- $authorSameAs = $authorSameAs | append (printf "https://linkedin.com/in/%s" .) -}}
 {{- end -}}
-{{- with .Site.Author.website -}}
+{{- with $authorParams.website -}}
     {{- $authorSameAs = $authorSameAs | append . -}}
 {{- end -}}
 
@@ -101,14 +111,14 @@
 {{- $schema = merge $schema (dict "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")) -}}
 
 {{- /* Build author object */ -}}
-{{- $author := dict "@type" "Person" "name" $authorName "url" $authorURL -}}
+{{- $authorSchema := dict "@type" "Person" "name" $authorName "url" $authorURL -}}
 {{- with $authorImage -}}
-    {{- $author = merge $author (dict "image" .) -}}
+    {{- $authorSchema = merge $authorSchema (dict "image" .) -}}
 {{- end -}}
 {{- with $authorSameAs -}}
-    {{- $author = merge $author (dict "sameAs" .) -}}
+    {{- $authorSchema = merge $authorSchema (dict "sameAs" .) -}}
 {{- end -}}
-{{- $schema = merge $schema (dict "author" $author) -}}
+{{- $schema = merge $schema (dict "author" $authorSchema) -}}
 
 {{- /* Build publisher object */ -}}
 {{- $publisher := dict "@type" "Organization" "name" .Site.Title "logo" (dict "@type" "ImageObject" "url" $publisherLogo) -}}

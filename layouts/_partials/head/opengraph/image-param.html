@@ -1,0 +1,8 @@
+{{- /* Resolve the OpenGraph/Twitter image param, falling back to cover.image */ -}}
+{{- $image := .Params.image -}}
+{{- if not $image -}}
+    {{- with .Params.cover.image -}}
+        {{- $image = . -}}
+    {{- end -}}
+{{- end -}}
+{{- return $image -}}
