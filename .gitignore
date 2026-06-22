@@ -18,5 +18,8 @@ exampleSite/content/*
 exampleSite/content/post/*
 !exampleSite/content/post/svg-cover-test/
 exampleSite/themes/
+
 .claude/
 .opencode/
+
+.ralph
