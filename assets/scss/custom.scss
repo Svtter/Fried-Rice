@@ -20,3 +20,26 @@
         background: transparent;
     }
 }
+
+/* Google AdSense ad unit on the 404 page */
+.not-found-ad {
+    margin: 2em 0;
+    text-align: center;
+    min-height: 100px;
+    padding: 20px;
+    border: 2px dashed var(--card-separator-color);
+    border-radius: 8px;
+    color: var(--card-text-color-tertiary);
+    font-size: 1.3rem;
+
+    /* Show placeholder text when no ad is loaded */
+    &:empty::after {
+        content: "Advertisement";
+        display: block;
+        padding: 30px 0;
+    }
+
+    ins {
+        background: transparent;
+    }
+}

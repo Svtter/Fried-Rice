@@ -36,4 +36,7 @@
     {{- partial "google_analytics.html" . -}}
 {{- end -}}
 
+{{/* Google AdSense loader — loads adsbygoogle.js once and activates every [data-adsense-placeholder] unit (in-article + 404). Self-guards on adsense.publisher_id. */}}
+{{- partial "adsense-script.html" . -}}
+
 {{- partial "head/custom.html" . -}}
