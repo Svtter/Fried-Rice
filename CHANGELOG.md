@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0] - 2026-06-24
+
+### Added
+- Global AdSense loader: include `adsense-script.html` in `head.html` to load `adsbygoogle.js` once and activate all `[data-adsense-placeholder]` units (#36)
+- 404 page ad unit with new `ads/not-found.html` partial and `.not-found-ad` styling in `custom.scss` (#36)
+- Per-location ad switches: `enable_in_article` (default off) and `enable_404` (default on), independent of `publisher_id` master switch (#36)
+
 ## [0.8.3] - 2026-06-22
 
 ### Fixed
