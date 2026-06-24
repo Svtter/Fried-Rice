@@ -21,7 +21,8 @@
     {{- $content := .Content | replaceRE "(<table>(?:.|\n)+?</table>)" $wrappedTable -}}
 
     {{- $adsenseEnabled := site.Params.adsense.publisher_id -}}
-    {{- if and $adsenseEnabled site.Params.adsense.ad_slot_in_article -}}
+    {{- $articleAdsOn := site.Params.adsense.enable_in_article | default false -}}
+    {{- if and $adsenseEnabled site.Params.adsense.ad_slot_in_article $articleAdsOn -}}
         {{- $interval := site.Params.adsense.paragraph_interval | default 3 -}}
         {{- $adHTML := partial "ads/in-article.html" . -}}
         {{- /* Split content at </p>, insert ad after every N-th paragraph */ -}}

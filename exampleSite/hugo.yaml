@@ -240,8 +240,11 @@ params:
 
     adsense:
         publisher_id: "ca-pub-TEST123456"
+        enable_in_article: false  # 默认不在文章中展示；设 true 开启文章广告（不影响 404）
         ad_slot_in_article: "1234567890"
         paragraph_interval: 3
+        enable_404: true          # 默认在 404 页展示；设 false 关闭（不影响文章广告）
+        ad_slot_404: "1234567890"  # 404 page ad unit slot
 
     imageProcessing:
         cover:

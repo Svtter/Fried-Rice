@@ -41,5 +41,12 @@
             document.getElementById('searchInput').setAttribute('value', searchKeyword);
         </script>
     {{- end -}}
+
+    {{/* AdSense ad unit on the 404 page — controlled by adsense.enable_404 (default on) + ad_slot_404 */}}
+    {{- $notFoundAdsOn := site.Params.adsense.enable_404 | default true -}}
+    {{- if and site.Params.adsense.publisher_id site.Params.adsense.ad_slot_404 $notFoundAdsOn -}}
+        {{- partial "ads/not-found.html" . -}}
+    {{- end -}}
+
     {{ partialCached "footer/footer" . }}
 {{ end }}
