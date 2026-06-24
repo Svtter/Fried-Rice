@@ -9,13 +9,6 @@
     color: var(--card-text-color-tertiary);
     font-size: 1.3rem;
 
-    /* Show placeholder text when no ad is loaded */
-    &:empty::after {
-        content: "Advertisement";
-        display: block;
-        padding: 30px 0;
-    }
-
     ins {
         background: transparent;
     }
@@ -31,13 +24,6 @@
     border-radius: 8px;
     color: var(--card-text-color-tertiary);
     font-size: 1.3rem;
-
-    /* Show placeholder text when no ad is loaded */
-    &:empty::after {
-        content: "Advertisement";
-        display: block;
-        padding: 30px 0;
-    }
 
     ins {
         background: transparent;

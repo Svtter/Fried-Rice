@@ -22,7 +22,7 @@
 
     {{- $adsenseEnabled := site.Params.adsense.publisher_id -}}
     {{- $articleAdsOn := site.Params.adsense.enable_in_article | default false -}}
-    {{- if and $adsenseEnabled site.Params.adsense.ad_slot_in_article (ne $articleAdsOn false) -}}
+    {{- if and $adsenseEnabled site.Params.adsense.ad_slot_in_article $articleAdsOn -}}
         {{- $interval := site.Params.adsense.paragraph_interval | default 3 -}}
         {{- $adHTML := partial "ads/in-article.html" . -}}
         {{- /* Split content at </p>, insert ad after every N-th paragraph */ -}}
