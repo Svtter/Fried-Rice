@@ -34,23 +34,6 @@
             {{ end }}
 
             <div class="hero-meta">
-                {{/* Topic tags/pills */}}
-                {{ with .Site.Params.hero.topics }}
-                <div class="hero-topics">
-                    {{ range . }}
-                    <span class="hero-topic-pill">{{ . }}</span>
-                    {{ end }}
-                </div>
-                {{ else }}
-                <div class="hero-topics">
-                    <span class="hero-topic-pill">{{ i18n "hero.defaultTopics.programming" }}</span>
-                    <span class="hero-topic-pill">{{ i18n "hero.defaultTopics.machineLearning" }}</span>
-                    <span class="hero-topic-pill">{{ i18n "hero.defaultTopics.devTools" }}</span>
-                    <span class="hero-topic-pill">{{ i18n "hero.defaultTopics.agentEngineer" }}</span>
-                    <span class="hero-topic-pill">{{ i18n "hero.defaultTopics.technicalWriting" }}</span>
-                </div>
-                {{ end }}
-
                 {{/* Newsletter subscription */}}
                 <div class="hero-newsletter">
                     <p class="newsletter-description">{{ i18n "hero.newsletter.description" }}</p>

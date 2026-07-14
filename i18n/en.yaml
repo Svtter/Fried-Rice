@@ -99,13 +99,6 @@ hero:
     defaultDescription:
         other: Focused on programming, machine learning, and development tools. Sharing practical experiences, exploring the essence of technology, and documenting the learning journey. From code implementation to engineering practice, sharing my thoughts and discoveries with you here.
 
-    defaultTopics:
-        programming: Programming
-        machineLearning: Machine Learning
-        devTools: Development Tools
-        agentEngineer: Agent Engineer
-        technicalWriting: Technical Writing
-
     newsletter:
         description:
             other: Subscribe to get the latest articles
