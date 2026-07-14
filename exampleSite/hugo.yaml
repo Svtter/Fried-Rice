@@ -30,12 +30,6 @@ languages:
             hero:
                 subtitle: Agent工程师 / 软件工程师 / 技术写作者
                 description: 专注于编程技术、机器学习和开发工具。分享实践经验，探索技术的本质，记录学习的旅程。
-                topics:
-                    - 编程
-                    - 机器学习
-                    - 开发工具
-                    - Agent工程师
-                    - 技术写作
     ar:
         languageName: عربي
         languagedirection: rtl
@@ -77,13 +71,6 @@ params:
         image:
             url: https://images.unsplash.com/photo-1518773553398-650c184e0bb3?auto=format&fit=crop&w=1200&q=80
             alt: Workspace with laptop and code editor for a personal tech blog
-        # Topic tags/pills shown in the hero section
-        topics:
-            - Programming
-            - Machine Learning
-            - Dev Tools
-            - Agent Engineer
-            - Technical Writing
 
     footer:
         since: 2020
