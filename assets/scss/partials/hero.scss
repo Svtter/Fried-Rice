@@ -26,18 +26,9 @@
         align-items: start;
     }
 
-    .hero-main {
-        @include respond(md) {
-            grid-area: main;
-            text-align: left;
-        }
-    }
-
+    .hero-main,
     .hero-meta {
-        @include respond(md) {
-            grid-area: meta;
-            text-align: left;
-        }
+        min-width: 0;
     }
 
     .hero-visual {
@@ -65,12 +56,9 @@
             aspect-ratio: 4 / 5;
             object-fit: cover;
         }
-
-        @include respond(md) {
-            grid-area: visual;
-        }
     }
 
+    /* Two-column layout only when hero image exists */
     .hero-grid:not(.hero-grid--no-visual) {
         @include respond(md) {
             column-gap: 44px;
@@ -78,30 +66,60 @@
             grid-template-areas:
                 "main visual"
                 "meta visual";
+
+            .hero-main {
+                grid-area: main;
+                text-align: left;
+            }
+
+            .hero-meta {
+                grid-area: meta;
+                text-align: left;
+            }
+
+            .hero-visual {
+                grid-area: visual;
+            }
+
+            .hero-description {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .hero-newsletter {
+                margin-left: 0;
+                margin-right: 0;
+            }
         }
     }
 
+    /* Centered single column when no hero image */
     .hero-grid--no-visual {
         max-width: 820px;
         margin: 0 auto;
+        justify-items: center;
+
+        .hero-main,
+        .hero-meta {
+            width: 100%;
+            text-align: center;
+        }
+
+        .hero-newsletter {
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
 
     .hero-title {
         font-family: var(--heading-font-family);
-        font-size: 4.5rem;
+        font-size: clamp(3.2rem, 8vw, 7rem);
         font-weight: 700;
         line-height: 1.1;
         margin: 0 0 24px;
         color: var(--card-text-color-main);
         letter-spacing: -0.02em;
-
-        @include respond(md) {
-            font-size: 6rem;
-        }
-
-        @include respond(lg) {
-            font-size: 7rem;
-        }
+        overflow-wrap: anywhere;
     }
 
     .hero-subtitle {
@@ -120,15 +138,11 @@
         font-size: 1.6rem;
         line-height: 1.7;
         color: var(--card-text-color-secondary);
-        margin: 0 0 4px;
+        margin: 0 auto 4px;
         max-width: 760px;
-        margin-left: auto;
-        margin-right: auto;
 
         @include respond(md) {
             font-size: 1.7rem;
-            margin-left: 0;
-            margin-right: 0;
         }
     }
 
@@ -145,8 +159,6 @@
         box-shadow: 0 16px 28px rgba(86, 67, 48, 0.09);
 
         @include respond(md) {
-            margin-left: 0;
-            margin-right: 0;
             padding: 24px 26px;
         }
 

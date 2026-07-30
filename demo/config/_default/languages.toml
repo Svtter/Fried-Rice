@@ -1,31 +1,31 @@
 [en]
     label  = "English"
-    title  = "Hugo Theme Stack"
+    title  = "Fried Rice Theme"
     weight = 1
 
     [en.params.sidebar]
-        subtitle = "Card-style Hugo theme designed for bloggers"
+        subtitle = "A warm Hugo theme with earth tones and flat design"
 
 [zh]
     label  = "简体中文"
-    title  = "Hugo 主题 Stack"
+    title  = "炒饭主题"
     weight = 2
 
     [zh.params.sidebar]
-        subtitle = "为博客设计的卡片式 Hugo 主题"
+        subtitle = "温暖大地色、扁平设计的 Hugo 主题"
 
 [zh-hant-tw]
     label  = "正體中文"
-    title  = "Hugo 主題 Stack"
+    title  = "炒飯主題"
     weight = 3
 
     [zh-hant-tw.params.sidebar]
-        subtitle = "為博客設計的卡片式 Hugo 主題"
+        subtitle = "溫暖大地色、扁平設計的 Hugo 主題"
 
 [ja]
     label  = "日本語"
-    title  = "Hugo Theme Stack"
+    title  = "Fried Rice Theme"
     weight = 4
 
     [ja.params.sidebar]
-        subtitle = "ブログ用のカードスタイルの Hugo テーマ"
+        subtitle = "アースカラーとフラットデザインの Hugo テーマ"
