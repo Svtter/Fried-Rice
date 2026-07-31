@@ -1,6 +1,6 @@
 baseURL                = "https://demo.stack.cai.im/"
 locale                 = "en-us"
-title                  = "Hugo Theme Stack"
+title                  = "Fried Rice Theme"
 # Theme i18n support
 # See i18n folder for available languages
 defaultContentLanguage = "en"
