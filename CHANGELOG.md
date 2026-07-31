@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2026-07-31
+
+### Fixed
+- Homepage pagination styles not applying because SCSS targeted `.page-item .page-link` while HTML renders `.page-link` as direct children (#39)
+- Hero layout overlap on desktop when no hero image is set — `grid-area` rules now only apply when a visual is present (#39)
+- Dark-mode pagination current-page shadow now uses `color-mix(var(--accent-color))` instead of a hardcoded purple (#39)
+
+### Changed
+- Pagination restyled as a centered pill bar aligned with the theme aesthetic (#39)
+- Hero title uses fluid `clamp()` sizing; no-image layout stays centered single-column (#39)
+- Removed hero topic pills from homepage and related i18n/config (#39)
+- Demo site branded as Fried Rice Theme with optional hero image config (#39)
+
 ## [1.0.0] - 2026-06-24
 
 ### Added
