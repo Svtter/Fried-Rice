@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.2] - 2026-08-03
+
+### Fixed
+- Translations silently missing on sites configured with `defaultContentLanguage = "zh-cn"` (the standard BCP47 code for Simplified Chinese): the theme shipped only `i18n/zh.toml`, but Hugo matches i18n catalogs by exact language key, so `zh-cn` loaded nothing and every `i18n` call returned empty — most visibly the newsletter form's description/placeholder/submit text. Added `i18n/zh-cn.toml` (full alias of the Chinese catalog) so both `zh` and `zh-cn` keys resolve (#43)
+
 ## [1.1.1] - 2026-08-03
 
 ### Fixed
