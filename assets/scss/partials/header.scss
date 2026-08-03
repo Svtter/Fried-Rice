@@ -9,20 +9,25 @@
     right: 0;
     z-index: 100;
 
-    /* v0-style backdrop blur effect */
-    background-color: rgba(var(--body-background-rgb), 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    /*
+     * Backdrop blur with a layered tint so the bar reads as a distinct surface
+     * above the page: a translucent card layer (lighter than body) over a
+     * translucent body tone, blurred. Subtle — a hair lighter than the page,
+     * not a hue shift.
+     */
+    background-color: rgba(var(--card-background-rgb), 0.72);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
 
-    border-bottom: 1px solid rgba(var(--card-separator-color-rgb), 0.4);
+    border-bottom: 1px solid rgba(var(--card-separator-color-rgb), 0.5);
 
     [data-scheme="dark"] & {
         border-bottom-color: rgba(255, 255, 255, 0.06);
     }
 
     /* Fallback for browsers without backdrop-filter support */
-    @supports not (backdrop-filter: blur(12px)) {
-        background-color: var(--body-background);
+    @supports not (backdrop-filter: blur(14px)) {
+        background-color: var(--card-background);
     }
 
     .site-nav {
@@ -375,3 +380,4 @@
 body {
     padding-top: 64px;
 }
+
