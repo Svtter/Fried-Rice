@@ -3,7 +3,7 @@
 <section class="newsletter-inline">
     <div class="newsletter-inline-header">
         <h3 class="newsletter-inline-title">{{ i18n "article.newsletter.title" }}</h3>
-        <p class="newsletter-inline-desc">{{ i18n "article.newsletter.description" }}</p>
+        <p class="newsletter-inline-desc">{{ i18n "article.newsletter.desc" }}</p>
     </div>
     <form action="{{ .Site.Params.article.newsletter.formAction | default "https://listmonk.sun-praise.com/subscription/form" }}" method="post" target="_blank" class="newsletter-inline-form">
         <input type="email" name="email" placeholder="{{ i18n "article.newsletter.emailPlaceholder" }}" required class="newsletter-inline-email">
