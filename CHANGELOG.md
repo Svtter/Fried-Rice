@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.1] - 2026-08-03
+
+### Fixed
+- Newsletter subscription forms (homepage hero + article footer inline) rendered the description, email placeholder, and submit button all blank: the `hero.newsletter.*` / `article.newsletter.*` i18n keys were referenced in the partials but never defined in any locale catalog. Keys now added for `zh` and `en`; the description key is named `desc` because Hugo reserves `description` in `lang.Translate` and mixing it with normal keys aborts the build. Missing fallback `hero.defaultSubtitle` / `hero.defaultDescription` keys are also added (#42)
+
 ## [1.0.1] - 2026-07-31
 
 ### Fixed
