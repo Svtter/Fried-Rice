@@ -12,7 +12,6 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--section-separation);
-
     /* With optional right sidebar for widgets */
     &.has-sidebar {
         @include respond(lg) {
@@ -44,8 +43,7 @@ main.main {
     display: flex;
 
     &.column {
-        flex-direction: column;
-    }
+        flex-direction: column;    }
 
     .full-width {
         width: 100%;
@@ -61,6 +59,5 @@ main.main {
     }
 
     @include respond(lg) {
-        --container-padding: 32px;
-    }
+        --container-padding: 32px;    }
 }

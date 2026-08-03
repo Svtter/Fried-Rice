@@ -7,7 +7,6 @@ licenselink = "https://github.com/Svtter/Fried-Rice/blob/main/LICENSE"
 description = "A modified Stack theme with enhanced SEO features"
 homepage    = "https://github.com/Svtter/Fried-Rice"
 demosite    = ""
-
 tags = ["blog", "responsive", "clean", "light", "dark", "personal"]
 
 features = [

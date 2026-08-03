@@ -6,14 +6,14 @@
 *   @website: https://svtter.cn
 *   @link: https://github.com/Svtter/Fried-Rice
 */
-import StackGallery from "ts/gallery";
-import { getColor } from 'ts/color';
-import menu from 'ts/menu';
-import createElement from 'ts/createElement';
-import StackColorScheme from 'ts/colorScheme';
-import { setupScrollspy } from 'ts/scrollspy';
-import { setupSmoothAnchors } from "ts/smoothAnchors";
-import { setupTTS } from "ts/tts";
+import StackGallery from './gallery';
+import { getColor } from './color';
+import menu from './menu';
+import createElement from './createElement';
+import StackColorScheme from './colorScheme';
+import { setupScrollspy } from './scrollspy';
+import { setupSmoothAnchors } from './smoothAnchors';
+import { setupTTS } from './tts';
 import { setupPaginationJump } from './pagination';
 import { setupCodeCopy } from './code-copy';
 

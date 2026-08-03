@@ -1,10 +1,7 @@
 {{ define "main" }}
     {{ partial "hero/hero.html" . }}
 
-    {{ $pages := where .Site.RegularPages "Type" "in" .Site.Params.mainSections }}
-    {{ $notHidden := where .Site.RegularPages "Params.hidden" "!=" true }}
-    {{ $filtered := ($pages | intersect $notHidden) }}
-    {{ $pag := .Paginate ($filtered) }}
+    {{- $paginator := partial "helper/paginator.html" . -}}
 
     {{/* Article list section header */}}
     <div class="article-list-header">
@@ -15,7 +12,7 @@
     </div>
 
     <section class="article-list">
-        {{ range $index, $element := $pag.Pages }}
+        {{ range $index, $element := $paginator.Pages }}
             {{ partial "article-list/default" . }}
         {{ end }}
     </section>
