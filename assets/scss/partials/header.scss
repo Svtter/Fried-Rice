@@ -10,14 +10,18 @@
     z-index: 100;
 
     /*
-     * Backdrop blur with a layered tint so the bar reads as a distinct surface
-     * above the page: a translucent card layer (lighter than body) over a
-     * translucent body tone, blurred. Subtle — a hair lighter than the page,
-     * not a hue shift.
+     * Layered glassmorphism tint. Default is a solid card-tone surface
+     * (a hair lighter than the page) so the bar always reads as a distinct
+     * layer. Supporting browsers get a translucent card layer over a
+     * blurred backdrop.
+     *
+     * NOTE: written as default-then-@supports (not @supports not) on
+     * purpose. Some CSS minifiers hoist the @supports not branch into an
+     * unconditional rule, which previously clobbered the blur background
+     * with a flat body color. Inverting the structure makes the default the
+     * safe baseline and the blur the progressive enhancement.
      */
-    background-color: rgba(var(--card-background-rgb), 0.72);
-    backdrop-filter: blur(14px) saturate(140%);
-    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    background-color: var(--card-background);
 
     border-bottom: 1px solid rgba(var(--card-separator-color-rgb), 0.5);
 
@@ -25,9 +29,10 @@
         border-bottom-color: rgba(255, 255, 255, 0.06);
     }
 
-    /* Fallback for browsers without backdrop-filter support */
-    @supports not (backdrop-filter: blur(14px)) {
-        background-color: var(--card-background);
+    @supports (backdrop-filter: blur(1px)) {
+        background-color: rgba(var(--card-background-rgb), 0.72);
+        backdrop-filter: blur(14px) saturate(140%);
+        -webkit-backdrop-filter: blur(14px) saturate(140%);
     }
 
     .site-nav {
