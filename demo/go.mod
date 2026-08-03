@@ -1,7 +1,7 @@
-module github.com/CaiJimmy/hugo-theme-stack/demo
+module github.com/Svtter/Fried-Rice/demo
 
 go 1.25.6
 
-replace github.com/CaiJimmy/hugo-theme-stack/v3 => ../
+replace github.com/Svtter/Fried-Rice => ../
 
-require github.com/CaiJimmy/hugo-theme-stack/v3 v3.34.0 // indirect
+require github.com/Svtter/Fried-Rice v1.0.1 // indirect

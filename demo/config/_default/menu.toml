@@ -1,7 +1,7 @@
 [[social]]
     identifier = "github"
     name       = "GitHub"
-    url        = "https://github.com/CaiJimmy/hugo-theme-stack"
+    url        = "https://github.com/Svtter/Fried-Rice"
 
     [social.params]
         icon = "brand-github"
