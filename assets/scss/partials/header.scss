@@ -10,20 +10,20 @@
     z-index: 100;
 
     /*
-     * Layered glassmorphism tint. Default is a solid card-tone surface
-     * (a hair lighter than the page) so the bar always reads as a distinct
-     * layer. Supporting browsers get a translucent card layer over a
-     * blurred backdrop.
+     * Layered glassmorphism header. Default is a solid card-tone surface
+     * (a hair lighter than the page) so the bar reads as a distinct layer.
+     * Supporting browsers get a translucent card layer over a blurred
+     * backdrop. On scroll, a `.scrolled` class (toggled by headerScroll.ts)
+     * raises opacity and adds a drop shadow so the header lifts above the
+     * content as the reader scrolls; at rest it stays quiet.
      *
-     * NOTE: written as default-then-@supports (not @supports not) on
-     * purpose. Some CSS minifiers hoist the @supports not branch into an
-     * unconditional rule, which previously clobbered the blur background
-     * with a flat body color. Inverting the structure makes the default the
-     * safe baseline and the blur the progressive enhancement.
+     * NOTE: default-then-@supports (not @supports not) on purpose — some CSS
+     * minifiers hoist the @supports-not branch into an unconditional rule,
+     * which previously clobbered the blur background with a flat body color.
      */
     background-color: var(--card-background);
-
     border-bottom: 1px solid rgba(var(--card-separator-color-rgb), 0.5);
+    transition: background-color 0.25s ease, box-shadow 0.25s ease;
 
     [data-scheme="dark"] & {
         border-bottom-color: rgba(255, 255, 255, 0.06);
@@ -33,6 +33,20 @@
         background-color: rgba(var(--card-background-rgb), 0.72);
         backdrop-filter: blur(14px) saturate(140%);
         -webkit-backdrop-filter: blur(14px) saturate(140%);
+    }
+
+    &.scrolled {
+        background-color: var(--card-background);
+
+        @supports (backdrop-filter: blur(1px)) {
+            background-color: rgba(var(--card-background-rgb), 0.92);
+        }
+
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+
+        [data-scheme="dark"] & {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
     }
 
     .site-nav {
