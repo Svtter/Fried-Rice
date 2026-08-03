@@ -16,6 +16,7 @@ import { setupSmoothAnchors } from './smoothAnchors';
 import { setupTTS } from './tts';
 import { setupPaginationJump } from './pagination';
 import { setupCodeCopy } from './code-copy';
+import { setupHeaderScroll } from './headerScroll';
 
 let Stack = {
     init: () => {
@@ -109,6 +110,8 @@ let Stack = {
         }
 
         setupPaginationJump();
+
+        setupHeaderScroll();
 
         new StackColorScheme(document.getElementById('dark-mode-toggle')!);
     }
