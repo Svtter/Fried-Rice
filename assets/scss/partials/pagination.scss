@@ -28,6 +28,14 @@
             display: flex;
         }
     }
+    .hide-on-mobile,
+    .pagination-link {
+        display: none;
+
+        @include respond(md) {
+            display: flex;
+        }
+    }
 
     .page-link {
         display: inline-flex;
@@ -40,8 +48,7 @@
         margin: 0;
         border: 1px solid transparent;
         border-radius: 999px;
-        background-color: transparent;
-        color: var(--card-text-color-secondary);
+        background-color: transparent;        color: var(--card-text-color-secondary);
         font-family: inherit;
         font-size: 1.4rem;
         font-weight: 500;
@@ -59,8 +66,7 @@
         svg {
             width: 16px;
             height: 16px;
-            flex-shrink: 0;
-        }
+            flex-shrink: 0;        }
 
         &:hover:not(.disabled):not(.current):not([aria-disabled="true"]) {
             color: var(--accent-color);
@@ -108,6 +114,10 @@
                 height: 18px;
             }
         }
+
+        &.pagination-jump-trigger {
+            cursor: pointer;
+        }
     }
 }
 
@@ -116,8 +126,7 @@
     @include card-style;
     box-shadow: var(--shadow-l2);
     color: var(--body-text-color);
-    margin: auto;
-    width: calc(100% - (var(--container-padding) * 2));
+    margin: auto;    width: calc(100% - (var(--container-padding) * 2));
     max-width: 320px;
     padding: var(--card-padding);
 
@@ -179,8 +188,7 @@
                 padding: 0 var(--spacing-md);
                 height: 44px;
                 border: 1.5px solid var(--card-separator-color);
-                border-radius: 999px;
-                background-color: var(--body-background);
+                border-radius: 999px;                background-color: var(--body-background);
                 color: var(--card-text-color-main);
                 font-size: 1.6rem;
                 outline: none;
@@ -188,6 +196,7 @@
                 appearance: none;
                 transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
+                /* Hide spinner */
                 -moz-appearance: textfield;
                 &::-webkit-outer-spin-button,
                 &::-webkit-inner-spin-button {
@@ -213,8 +222,7 @@
                 background-color: var(--accent-color);
                 color: var(--accent-color-text);
                 border: none;
-                border-radius: 999px;
-                font-size: 1.5rem;
+                border-radius: 999px;                font-size: 1.5rem;
                 font-weight: bold;
                 cursor: pointer;
                 transition: background-color 0.2s ease, box-shadow 0.2s ease;

@@ -10,8 +10,7 @@
 <meta name="twitter:description" {{ printf "content=%q" $description | safeHTMLAttr }}>
 
 {{- $imageParam := partial "head/opengraph/image-param" . -}}
-{{- $image := partial "helper/image" (dict "Image" $imageParam "Resources" .Resources "Context" .) -}}
-{{- if $image -}}
+{{- $image := partial "helper/image" (dict "Image" $imageParam "Resources" .Resources "Context" .) -}}{{- if $image -}}
     <meta name="twitter:card" content="{{ .Site.Params.opengraph.twitter.card }}">
     <meta name="twitter:image" content='{{ absURL $image.Permalink }}' />
 {{- end -}}

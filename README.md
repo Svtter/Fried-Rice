@@ -23,7 +23,6 @@ A warm, modern Hugo theme with earth-tone colors and flat design philosophy. Bas
 - **Modern Pagination**: Accent-colored, button-style navigation
 - **Improved Header**: Sun/moon theme toggle with consistent icon styling
 - **6 Articles per Page**: Increased from default 5 for better content density
-
 ### 🔍 SEO & Performance
 - Complete Open Graph support (Facebook, Twitter Cards)
 - Canonical URLs and proper meta tags
@@ -40,7 +39,6 @@ A warm, modern Hugo theme with earth-tone colors and flat design philosophy. Bas
 - Fast build times with Hugo modules
 
 ## 📦 Installation
-
 ### Using Hugo Modules (Recommended)
 
 1. Initialize Hugo modules in your project:
