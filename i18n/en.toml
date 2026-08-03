@@ -33,6 +33,13 @@ darkMode   = "Dark Mode"
         copy   = "Copy"
         copied = "Copied!"
 
+    [article.newsletter]
+        title            = "Subscribe to updates"
+        desc             = "Enjoyed this? Leave your email to get notified of new posts."
+        emailPlaceholder = "Enter your email address"
+        subscriberName   = "Blog subscriber"
+        submit           = "Subscribe"
+
 [notFound]
     title    = "Not Found"
     subtitle = "This page does not exist"
@@ -85,3 +92,13 @@ darkMode   = "Dark Mode"
     jumpToPage = "Jump to page"
     jump       = "Go"
     pressEnter = "Press Enter to jump"
+
+[hero]
+    defaultSubtitle    = "Welcome to my blog"
+    defaultDescription = "Sharing practical experiences and exploring technology."
+
+    [hero.newsletter]
+        desc             = "Subscribe to get the latest posts delivered straight to your inbox."
+        emailPlaceholder = "Enter your email address"
+        subscriberName   = "Blog subscriber"
+        submit           = "Subscribe"
