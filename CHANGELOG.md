@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Configurable header logo: `params.header.logo` renders an optional icon (local asset or remote URL) next to the site title in the header; unset by default, title-only rendering is unchanged
+- Configurable header logo: `params.header.logo` renders an optional icon (local asset or remote URL) next to the site title in the header; unset by default, title-only rendering is unchanged (#45)
 
 ## [1.1.2] - 2026-08-03
 
