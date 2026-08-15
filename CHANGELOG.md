@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Configurable header logo: `params.header.logo` renders an optional icon (local asset or remote URL) next to the site title in the header; unset by default, title-only rendering is unchanged (#45)
 
+### Fixed
+- Article inline TOC rendered unstyled after the v4.0.3 upstream merge reintroduced its markup without the companion `.article-toc` SCSS rules: the native disclosure marker showed beside the chevron icon, the summary/title had no affordance styling, and the inline TOC duplicated the desktop sidebar TOC widget. Styles restored (adapted to the flat design) and the inline TOC now hides at the `lg` breakpoint where the sidebar TOC takes over (#44)
+
 ## [1.1.2] - 2026-08-03
 
 ### Fixed
