@@ -10,6 +10,12 @@ params:
     rssFullContent: true
     favicon:
 
+    # Logo icon shown next to the site title in the header
+    # Local image in your site's "assets" folder (e.g. img/logo.png)
+    # or a remote URL. Leave empty to show the site title only.
+    header:
+        logo:
+
     # Hero section configuration
     # Configure the hero section shown on the homepage
     hero:

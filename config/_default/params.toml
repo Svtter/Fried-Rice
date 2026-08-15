@@ -5,6 +5,13 @@ rssFullContent = true
 # lastmod = sort by last modified date, in descending order
 SortBy         = "default"
 
+[header]
+    # Logo icon shown next to the site title in the header
+    # Local image in your site's "assets" folder (e.g. "img/logo.png")
+    # or a remote URL (e.g. "https://example.com/logo.png")
+    # Leave empty to show the site title only
+    logo = ""
+
 [footer]
     since      = 2026
     customText = ""

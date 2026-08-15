@@ -2,6 +2,10 @@ mainSections   = ["post"]
 rssFullContent = true
 favicon        = "img/avatar.png"
 
+[header]
+    # Logo icon shown next to the site title in the header
+    logo = "img/avatar.png"
+
 [hero]
     subtitle    = "Agent Engineer / Software Engineer / Technical Writer"
     description = "Focused on programming, machine learning, and development tools. Sharing practical experiences, exploring the essence of technology, and documenting the learning journey."
