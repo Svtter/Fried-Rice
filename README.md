@@ -19,6 +19,7 @@ A warm, modern Hugo theme with earth-tone colors and flat design philosophy. Bas
 ### 🚀 Enhanced Features
 - **Table of Contents Sidebar**: Sticky TOC for easy navigation on article pages (desktop)
 - **RSS Feed Integration**: Prominent RSS icon in header navigation
+- **Configurable Header Logo**: Optional logo icon next to the site title (see [Header Logo](#header-logo-optional))
 - **Newsletter Subscription**: Built-in Listmonk integration in hero section
 - **Modern Pagination**: Accent-colored, button-style navigation
 - **Improved Header**: Sun/moon theme toggle with consistent icon styling
@@ -122,6 +123,19 @@ Or in TOML format:
 
 If these values are not set, the theme will use default i18n translations from the `i18n/` directory.
 
+### Header Logo (Optional)
+
+Show a logo icon next to the site title in the header:
+
+```toml
+# config.toml
+[params.header]
+  logo = "img/logo.png"                    # image in your site's assets/ folder
+  # logo = "https://example.com/logo.png"  # or a remote URL
+```
+
+The logo renders as a 40px rounded icon to the left of the site title. Leave `logo` unset (default) to show the title only.
+
 ### Newsletter Integration (Optional)
 
 To enable newsletter subscription in the hero section, edit `layouts/partials/hero/hero.html` with your Listmonk endpoint:
@@ -140,18 +154,40 @@ To enable newsletter subscription in the hero section, edit `layouts/partials/he
 | Card Style | Bordered with shadows | Flat, borderless |
 | Pagination | Compact bar | Spaced buttons |
 | TOC | In-content | Sticky sidebar |
-| Header Icons | Toggle icons | Sun/moon + RSS |
+| Header Icons | Toggle icons | Sun/moon + RSS + optional logo |
 | Articles per Page | 5 | 6 |
 | Article Schema | Basic implementation | Enhanced with keywords, word count, reading time, and language support |
 
 ## 🛠️ Development
 
+### Repository Layout
+
+The repository ships two pre-made sites alongside the theme itself. They serve different purposes — don't mix them up:
+
+| Directory | What it is | What's inside |
+|-----------|------------|---------------|
+| [`demo/`](./demo) | **Full-featured demo site** — this is what you want to preview the theme | Own `config/_default/` (menus, hero, widgets), ~5 sample posts in 4 languages (`en`, `ja`, `zh`, `zh-hant-tw`), uses the theme as a Hugo module via `go.mod` (`replace ../` → local theme dir) |
+| [`exampleSite/`](./exampleSite) | **Minimal CI test fixture** — not a showcase | One SVG-cover rendering test post, no site config; served by `run.sh` on port 1314 |
+
 ### Local Development
 
-```bash
-# Clone the repository
-git clone https://github.com/Svtter/Fried-Rice.git
+Preview the full demo site (recommended — local theme edits are picked up live thanks to the `replace ../` module mapping):
 
+```bash
+git clone https://github.com/Svtter/Fried-Rice.git
+cd Fried-Rice
+hugo server --source demo --port 1313
+```
+
+Or use the provided dev services (Hugo on `:1314` serving `exampleSite/`, plus an HTTPS proxy via Caddy):
+
+```bash
+./run.sh
+```
+
+To test the theme against a fresh site instead:
+
+```bash
 # Create a test site
 hugo new site test-site
 cd test-site

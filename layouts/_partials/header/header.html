@@ -2,8 +2,11 @@
 <header class="site-header">
     <nav class="site-nav">
         <div class="nav-container">
-            {{/* Site branding - simplified, no avatar */}}
+            {{/* Site branding: optional logo icon (params.header.logo) + site title */}}
             <a href="{{ .Site.BaseURL | relLangURL }}" class="site-brand">
+                {{- with partial "helper/image" (dict "Image" .Site.Params.header.logo "Resources" resources "Context" .) -}}
+                    <img src="{{ .Permalink }}" alt="" class="brand-avatar" aria-hidden="true">
+                {{- end -}}
                 <span class="brand-name">{{ .Site.Title }}</span>
             </a>
 
