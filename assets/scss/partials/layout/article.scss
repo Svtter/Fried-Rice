@@ -133,6 +133,62 @@
     color: var(--card-text-color-main);
 }
 
+.article-toc {
+    padding: 0 var(--card-padding);
+    margin-top: var(--spacing-lg);
+
+    /* Sidebar TOC widget takes over on large screens */
+    @include respond(lg) {
+        display: none;
+    }
+
+    details {
+        background-color: var(--card-background);
+        border: 1px solid var(--card-separator-color);
+        border-radius: var(--card-border-radius);
+
+        &[open] .article-toc-title svg {
+            transform: rotate(90deg);
+        }
+    }
+
+    summary {
+        list-style: none;
+        padding: var(--spacing-md) var(--spacing-lg);
+        cursor: pointer;
+
+        &::-webkit-details-marker {
+            display: none;
+        }
+    }
+
+    .article-toc-title {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        font-size: 1.4rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: var(--card-text-color-tertiary);
+        transition: color 0.2s ease;
+
+        svg {
+            width: 20px;
+            height: 20px;
+            stroke-width: 1.33;
+            transition: transform 0.3s ease;
+        }
+    }
+
+    summary:hover .article-toc-title {
+        color: var(--card-text-color-secondary);
+    }
+
+    .toc-nav {
+        padding: 0 var(--spacing-lg) var(--spacing-md);
+    }
+}
+
 .widget--toc {
     /* Styles inherited from .widget (including padding) */
     overflow: hidden;
