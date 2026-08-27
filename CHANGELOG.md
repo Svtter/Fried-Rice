@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed
+- Desktop hero layout: the 4/5 hero visual spans both grid rows and its intrinsic height exceeded the text column's natural height, stretching the rows apart — a large dead gap (~140px at 1440px+ viewports, vs the designed 28px) appeared between the description and the newsletter card, and the visual ended lower than the left column. The image is now taken out of flow (`position: absolute; inset: 0`) so the text column dictates the row heights and the visual stretches to match it exactly; a `300px` figure min-height covers short-text viewports, and the newsletter's duplicated `margin-top` is dropped in favor of the grid row gap (#46)
+
 ## [1.2.0] - 2026-08-15
 
 ### Added
