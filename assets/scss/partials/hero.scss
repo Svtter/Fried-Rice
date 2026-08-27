@@ -79,6 +79,21 @@
 
             .hero-visual {
                 grid-area: visual;
+
+                /* The visual must not dictate row heights: with a 4/5 image in
+                   flow, the spanning figure stretches both rows apart and leaves
+                   a dead gap between the description and the newsletter card.
+                   Take the img out of flow so rows size to the text column and
+                   the visual stretches to exactly match its height. */
+                align-self: stretch;
+                min-height: 300px;
+
+                img {
+                    position: absolute;
+                    inset: 0;
+                    min-height: 0;
+                    aspect-ratio: auto;
+                }
             }
 
             .hero-description {
@@ -89,6 +104,7 @@
             .hero-newsletter {
                 margin-left: 0;
                 margin-right: 0;
+                margin-top: 0;
             }
         }
     }
