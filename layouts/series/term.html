@@ -1,0 +1,46 @@
+{{ define "main" }}
+    {{- /*
+        Series landing page: lists all articles of the series in reading order.
+        Reading order = front-matter `weight` (ascending) first, publication
+        date (oldest first) as fallback for unweighted articles.
+    */ -}}
+    {{- $ordered := sort (sort .Pages "Date" "asc") "Params.weight" "asc" -}}
+    {{- $image := partialCached "helper/image" (dict "Image" .Params.image "Resources" .Resources "Context" .) .RelPermalink "series-cover" -}}
+
+    {{- if $image -}}
+        <div class="series-cover">
+            {{- if $image.Resource -}}
+                {{- $Permalink := $image.Resource.RelPermalink -}}
+                {{- $Width := $image.Resource.Width -}}
+                {{- $Height := $image.Resource.Height -}}
+                {{- if and (default true .Site.Params.imageProcessing.cover.enabled) (reflect.IsImageResourceProcessable $image.Resource) -}}
+                    {{- $cover := $image.Resource.Fill "1200x400" -}}
+                    {{- $Permalink = $cover.RelPermalink -}}
+                    {{- $Width = $cover.Width -}}
+                    {{- $Height = $cover.Height -}}
+                {{- end -}}
+                <img src="{{ $Permalink }}" width="{{ $Width }}" height="{{ $Height }}" loading="lazy" alt="{{ .Title }}">
+            {{- else -}}
+                <img src="{{ $image.Permalink }}" loading="lazy" alt="{{ .Title }}">
+            {{- end -}}
+        </div>
+    {{- end -}}
+
+    <header>
+        <div class="section-card">
+            <div class="section-details">
+                <h3 class="section-count">{{ T "list.page" (len $ordered) }}</h3>
+                <h1 class="section-term">{{ .Title }}</h1>
+                {{ with .Params.description }}
+                    <h2 class="section-description">{{ . }}</h2>
+                {{ end }}
+            </div>
+        </div>
+    </header>
+
+    <section class="article-list--compact">
+        {{ range $ordered }}
+            {{ partial "article-list/compact" . }}
+        {{ end }}
+    </section>
+{{ end }}

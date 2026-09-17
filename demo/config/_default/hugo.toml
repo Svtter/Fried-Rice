@@ -11,6 +11,11 @@ hasCJKLanguage         = false
 [[module.imports]]
     path = "github.com/Svtter/Fried-Rice"
 
+# The `series` taxonomy powers the article series feature.
+# Hugo does not merge taxonomies from theme config, so it is declared here.
+[taxonomies]
+    series = "series"
+
 [pagination]
     pagerSize = 3
 

@@ -1,0 +1,225 @@
+/* Series card grid on the homepage.
+   Cards mirror the article cards in .article-list so both sections
+   share the same proportions: 192px cover on top, details below. */
+.series-list-header {
+    margin-top: 40px;
+}
+
+.series-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+
+    @include respond(md) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .series-card {
+        @include card-style;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        text-decoration: none;
+
+        .series-card-image {
+            position: relative;
+            width: 100%;
+            height: 192px;  /* same as .article-list .article-image */
+            overflow: hidden;
+            background-color: var(--card-background-selected);
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.3s ease;
+            }
+        }
+
+        .series-card-details {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            flex-grow: 1;
+            padding: var(--card-padding);
+        }
+
+        .series-card-title {
+            margin: 0;
+            font-family: var(--heading-font-family);
+            font-weight: 600;
+            font-size: 2.2rem;
+            color: var(--card-text-color-main);
+        }
+
+        .series-card-count {
+            font-size: 1.4rem;
+            color: var(--card-text-color-tertiary);
+        }
+
+        &:hover .series-card-image img {
+            transform: scale(1.05);
+        }
+
+        &:hover .series-card-title {
+            color: var(--accent-color);
+        }
+    }
+}
+
+/* Series landing page cover banner */
+.series-cover {
+    @include card-style;
+    overflow: hidden;
+    margin-bottom: 24px;
+
+    img {
+        display: block;
+        width: 100%;
+        height: 240px;
+        object-fit: cover;
+    }
+}
+
+/* Series navigation box on article pages */
+.article-series {
+    @include card-style;
+    overflow: hidden;  /* keep the cover image inside the rounded corners */
+    margin: 24px 0;
+
+    .article-series-cover {
+        display: block;
+
+        img {
+            display: block;
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+    }
+
+    .article-series-header {
+        padding: 16px 20px 4px;
+    }
+
+    .article-series-title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin: 0;
+        color: var(--card-text-color-main);
+
+        .icon {
+            width: 2rem;
+            height: 2rem;
+            flex-shrink: 0;
+            color: var(--accent-color);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+
+            &:hover {
+                color: var(--accent-color);
+            }
+        }
+    }
+
+    .article-series-list {
+        list-style: none;
+        margin: 4px 0 0;
+        padding: 0 20px;
+        font-size: 1.5rem;
+
+        li {
+            border-top: 1px solid var(--card-separator-color);
+
+            a {
+                display: flex;
+                align-items: baseline;
+                gap: 12px;
+                padding: 10px 0;
+                text-decoration: none;
+            }
+
+            &:first-child {
+                border-top: 0;
+            }
+
+            &:hover .article-series-part-title {
+                color: var(--accent-color);
+            }
+
+            &.current {
+                .article-series-part,
+                .article-series-part-title {
+                    color: var(--accent-color);
+                    font-weight: 600;
+                }
+            }
+        }
+
+        .article-series-part {
+            flex-shrink: 0;
+            min-width: 64px;
+            font-size: 1.3rem;
+            color: var(--card-text-color-tertiary);
+        }
+
+        .article-series-part-title {
+            color: var(--card-text-color-secondary);
+        }
+    }
+
+    .article-series-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        gap: 16px;
+        padding: 12px 20px 16px;
+
+        .article-series-prev,
+        .article-series-next {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            max-width: 48%;
+            text-decoration: none;
+
+            &:hover .article-series-nav-title {
+                color: var(--accent-color-darker);
+            }
+        }
+
+        .article-series-prev {
+            text-align: left;
+        }
+
+        .article-series-next {
+            text-align: right;
+            margin-left: auto;
+        }
+
+        .article-series-nav-direction {
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--card-text-color-tertiary);
+        }
+
+        .article-series-nav-title {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--accent-color);
+
+            /* clamp long titles to one line */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+}

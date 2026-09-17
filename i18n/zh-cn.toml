@@ -13,6 +13,11 @@ darkMode   = "暗色模式"
     lastUpdatedOn   = "最后更新于"
     readingTime     = "阅读时长: {{ .Count }} 分钟"
 
+    [article.series]
+        part = "第 {{ .Count }} 部分"
+        prev = "上一篇"
+        next = "下一篇"
+
     [article.alert]
         note      = "备注"
         tip       = "提示"
@@ -93,3 +98,8 @@ darkMode   = "暗色模式"
         emailPlaceholder = "输入您的邮箱地址"
         subscriberName   = "博客订阅者"
         submit           = "订阅"
+
+[home]
+    latestPosts = "最新文章"
+    series      = "系列文章"
+    viewAll     = "查看全部"

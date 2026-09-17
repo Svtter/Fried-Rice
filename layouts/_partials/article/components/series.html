@@ -1,0 +1,90 @@
+{{- /*
+    Series navigation box shown on article pages that belong to a series.
+    Displays the optional series cover, the series title (linking to the
+    series page), an ordered list of all parts with the current article
+    highlighted, and prev/next links with adjacent part titles.
+    Reading order matches the series landing page: weight first, date fallback.
+*/ -}}
+{{- $enabled := default true .Site.Params.article.series.enabled -}}
+{{- if and $enabled .Params.series -}}
+    {{- $seriesName := index .Params.series 0 -}}
+    {{- $series := .Site.GetPage (printf "/series/%s" (urlize $seriesName)) -}}
+    {{- with $series -}}
+        {{- $current := $ -}}
+        {{- $currentPermalink := $current.RelPermalink -}}
+        {{- $ordered := sort (sort .Pages "Date" "asc") "Params.weight" "asc" -}}
+
+        {{- $currentIndex := 0 -}}
+        {{- range $i, $page := $ordered -}}
+            {{- if eq $page.RelPermalink $currentPermalink -}}
+                {{- $currentIndex = $i -}}
+            {{- end -}}
+        {{- end -}}
+
+        {{- $prev := false -}}
+        {{- $next := false -}}
+        {{- if gt $currentIndex 0 -}}
+            {{- $prev = index $ordered (sub $currentIndex 1) -}}
+        {{- end -}}
+        {{- if lt $currentIndex (sub (len $ordered) 1) -}}
+            {{- $next = index $ordered (add $currentIndex 1) -}}
+        {{- end -}}
+
+        <aside class="article-series">
+            {{- $image := partialCached "helper/image" (dict "Image" .Params.image "Resources" .Resources "Context" .) .RelPermalink "series-box" -}}
+            {{- if $image -}}
+                <a href="{{ .RelPermalink }}" class="article-series-cover">
+                    {{- if $image.Resource -}}
+                        {{- $Permalink := $image.Resource.RelPermalink -}}
+                        {{- $Width := $image.Resource.Width -}}
+                        {{- $Height := $image.Resource.Height -}}
+                        {{- if and (default true .Site.Params.imageProcessing.cover.enabled) (reflect.IsImageResourceProcessable $image.Resource) -}}
+                            {{- $cover := $image.Resource.Fill "800x300" -}}
+                            {{- $Permalink = $cover.RelPermalink -}}
+                            {{- $Width = $cover.Width -}}
+                            {{- $Height = $cover.Height -}}
+                        {{- end -}}
+                        <img src="{{ $Permalink }}" width="{{ $Width }}" height="{{ $Height }}" loading="lazy" alt="{{ .Title }}">
+                    {{- else -}}
+                        <img src="{{ $image.Permalink }}" loading="lazy" alt="{{ .Title }}">
+                    {{- end -}}
+                </a>
+            {{- end -}}
+
+            <div class="article-series-header">
+                <h2 class="article-series-title">
+                    {{ partial "helper/icon" "series" }}
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                </h2>
+            </div>
+
+            <ol class="article-series-list">
+                {{- range $i, $page := $ordered -}}
+                    <li {{ if eq $page.RelPermalink $currentPermalink }}class="current"{{ end }}>
+                        <a href="{{ $page.RelPermalink }}">
+                            <span class="article-series-part">{{ T "article.series.part" (add $i 1) }}</span>
+                            <span class="article-series-part-title">{{ $page.Title }}</span>
+                        </a>
+                    </li>
+                {{- end -}}
+            </ol>
+
+            {{- if or $prev $next -}}
+                <div class="article-series-nav">
+                    {{- with $prev -}}
+                        <a class="article-series-prev" href="{{ .RelPermalink }}">
+                            <span class="article-series-nav-direction">← {{ T "article.series.prev" }}</span>
+                            <span class="article-series-nav-title">{{ .Title }}</span>
+                        </a>
+                    {{- end -}}
+                    {{- with $next -}}
+                        <a class="article-series-next" href="{{ .RelPermalink }}">
+                            <span class="article-series-nav-direction">{{ T "article.series.next" }} →</span>
+                            <span class="article-series-nav-title">{{ .Title }}</span>
+                        </a>
+                    {{- end -}}
+                </div>
+            {{- end -}}
+        </aside>
+    {{- end -}}
+{{- end -}}

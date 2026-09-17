@@ -136,6 +136,43 @@ Show a logo icon next to the site title in the header:
 
 The logo renders as a 40px rounded icon to the left of the site title. Leave `logo` unset (default) to show the title only.
 
+### Article Series
+
+Group related posts into a series so readers can follow multi-part content. First, declare the `series` taxonomy in your site configuration (Hugo does not merge `taxonomies` from theme config, so the theme cannot register it for you):
+
+```yaml
+# hugo.yaml
+taxonomies:
+  series: series
+```
+
+Then add a `series` entry to the front matter of each post in the series:
+
+```yaml
+---
+title: "Part 1: Getting Started"
+series: ["My Guide"]   # All posts sharing the same name form one series
+weight: 1              # Optional: reading order within the series (lower = earlier);
+                       # posts without a weight are ordered by date (oldest first)
+---
+```
+
+- Each series gets a landing page at `/series/my-guide/` listing its articles in reading order.
+- Every post in a series shows a series box with the full ordered list of parts and previous/next links.
+- The homepage shows a "Series" section with one card per series (cover, title, article count), linking to each series page. It is hidden automatically when the site has no series; configure it via `params.series.showOnHome` (default true) and `params.series.limit` (default 4).
+- A series can have a description and a cover image: create `content/series/my-guide/_index.md` in your site:
+
+  ```yaml
+  ---
+  title: My Guide
+  description: Everything you need to know about…
+  image: cover.jpg   # optional, shown on the series page and in the series box
+  ---
+  ```
+
+- To hide the series box on article pages while keeping the landing pages, set `params.article.series.enabled: false`.
+- If your site already defines `taxonomies`, just add `series: series` alongside the existing entries.
+
 ### Newsletter Integration (Optional)
 
 To enable newsletter subscription in the hero section, edit `layouts/partials/hero/hero.html` with your Listmonk endpoint:

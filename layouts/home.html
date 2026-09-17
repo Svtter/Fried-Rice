@@ -1,6 +1,8 @@
 {{ define "main" }}
     {{ partial "hero/hero.html" . }}
 
+    {{ partial "series/home" . }}
+
     {{- $paginator := partial "helper/paginator.html" . -}}
 
     {{/* Article list section header */}}
