@@ -18,6 +18,11 @@ darkMode   = "Dark Mode"
     relatedContent  = "Related content"
     lastUpdatedOn   = "Last updated on"
 
+    [article.series]
+        part = "Part {{ .Count }}"
+        prev = "Previous"
+        next = "Next"
+
     [article.readingTime]
         one   = "{{ .Count }} minute read"
         other = "{{ .Count }} minutes read"
@@ -102,3 +107,8 @@ darkMode   = "Dark Mode"
         emailPlaceholder = "Enter your email address"
         subscriberName   = "Blog subscriber"
         submit           = "Subscribe"
+
+[home]
+    latestPosts = "Latest Posts"
+    series      = "Series"
+    viewAll     = "View all"

@@ -29,6 +29,8 @@
 {{ define "main" }}
     {{ partial "article/article.html" . }}
 
+    {{ partial "article/components/series" . }}
+
     {{ if .Params.links }}
         {{ partial "article/components/links" . }}
     {{ end }}

@@ -1,0 +1,52 @@
+{{- /*
+    Homepage section listing the site's article series as cards.
+    Each card links to the series landing page. Renders nothing when
+    the series taxonomy is not configured or has no terms.
+*/ -}}
+{{- $showOnHome := default true .Site.Params.series.showOnHome -}}
+{{- $limit := default 4 .Site.Params.series.limit -}}
+{{- $taxonomy := .Site.GetPage "series" -}}
+{{- if and $showOnHome $taxonomy -}}
+    {{- $items := slice -}}
+    {{- range $taxonomy.Pages -}}
+        {{- $items = $items | append (dict "term" . "count" (len .Pages)) -}}
+    {{- end -}}
+    {{- $sorted := sort $items "count" "desc" | first $limit -}}
+
+    {{- if gt (len $sorted) 0 -}}
+        <div class="article-list-header series-list-header">
+            <h2 class="section-title">{{ T "home.series" }}</h2>
+            <a href="{{ $taxonomy.RelPermalink }}" class="view-all-link">
+                {{ T "home.viewAll" }} →
+            </a>
+        </div>
+
+        <section class="series-list">
+            {{- range $sorted -}}
+                {{- $term := .term -}}
+                {{- $count := .count -}}
+                {{- $image := partialCached "helper/image" (dict "Image" $term.Params.image "Resources" $term.Resources "Context" $term) $term.RelPermalink "series-card" -}}
+                <a class="series-card{{ if $image }} has-image{{ end }}" href="{{ $term.RelPermalink }}">
+                    {{- if $image -}}
+                        <div class="series-card-image">
+                            {{- if $image.Resource -}}
+                                {{- $Permalink := $image.Resource.RelPermalink -}}
+                                {{- if and (default true $.Site.Params.imageProcessing.thumbnail.enabled) (reflect.IsImageResourceProcessable $image.Resource) -}}
+                                    {{- $thumbnail := $image.Resource.Fill "800x450" -}}
+                                    {{- $Permalink = $thumbnail.RelPermalink -}}
+                                {{- end -}}
+                                <img src="{{ $Permalink }}" loading="lazy" alt="{{ $term.Title }}">
+                            {{- else -}}
+                                <img src="{{ $image.Permalink }}" loading="lazy" alt="{{ $term.Title }}">
+                            {{- end -}}
+                        </div>
+                    {{- end -}}
+                    <div class="series-card-details">
+                        <h3 class="series-card-title">{{ $term.Title }}</h3>
+                        <span class="series-card-count">{{ T "list.page" $count }}</span>
+                    </div>
+                </a>
+            {{- end -}}
+        </section>
+    {{- end -}}
+{{- end -}}

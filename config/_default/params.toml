@@ -77,6 +77,13 @@ SortBy         = "default"
     site = ""
     card = "summary_large_image"
 
+[series]
+    # Show a series card grid on the homepage (hidden automatically when the
+    # site has no series or the series taxonomy is not configured)
+    showOnHome = true
+    # Max number of series cards shown on the homepage
+    limit      = 4
+
 [colorScheme]
     toggle  = true
     default = "auto"
