@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-09-17
+
+### Added
+- Article series support: posts sharing a `series: ["<name>"]` front-matter value form a series. Each series gets a landing page at `/series/<name>/` (cover banner, description, articles ordered by `weight` with date as fallback), and every post in a series shows a navigation box with the ordered part list (current part highlighted) and previous/next links that include the adjacent post titles. Series covers/descriptions are configured via `content/series/<name>/_index.md` (`image` / `description`) (#47, #48)
+- Homepage series section: series displayed as cards in the same proportions as article cards (cover, title, article count), ordered by article count and linking to each series page; hidden automatically when the site has no series. Configurable via `params.series.showOnHome` (default true) and `params.series.limit` (default 4) (#48)
+- Series UI strings for `en` and `zh-cn` (other languages fall back to English), plus a `series` icon and `series` / `weight` fields in the post archetype (#48)
+
+### Notes
+- The `series` taxonomy must be declared in the site configuration (`taxonomies: series: series`): Hugo does not merge `taxonomies` from theme config, so the theme cannot register it on the user's behalf. Documented in the README; the demo site ships a two-part "Theme Walkthrough" series as a live example (#48)
+- The in-article series box can be disabled globally with `params.article.series.enabled: false` while keeping the landing pages (#48)
+- OpenSpec change proposal lives at `openspec/changes/add-article-series/` (archive with `openspec archive add-article-series` after deployment) (#48)
+
 ## [1.2.1] - 2026-08-27
 
 ### Fixed
