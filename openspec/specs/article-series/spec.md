@@ -1,7 +1,8 @@
-# Specification: article-series
+# article-series Specification
 
-## ADDED Requirements
-
+## Purpose
+Article series group related posts that share a `series: ["<name>"]` front-matter value: each series gets a landing page listing its chapters newest first with descriptions, every chapter shows an in-article navigation box with the ordered part list and previous/next links, and the homepage can surface series as cards. The site must declare the `series` taxonomy itself (Hugo does not merge taxonomies from theme config).
+## Requirements
 ### Requirement: Series taxonomy support
 The theme SHALL support a `series` taxonomy so that posts declaring `series: ["<name>"]` in front matter are grouped and Hugo generates `/series/` and `/series/<name>/` pages. Because Hugo does not merge `taxonomies` from theme config, the site configuration MUST declare the `series` taxonomy (the theme MUST document this and keep the default `tags` and `categories` taxonomies unaffected).
 
@@ -14,15 +15,15 @@ The theme SHALL support a `series` taxonomy so that posts declaring `series: ["<
 - **THEN** the post renders exactly as before with no series UI and no `/series/` entry
 
 ### Requirement: Ordered series landing page
-The theme SHALL provide a layout for series term pages that presents the series title and description, followed by the series' articles in reading order. Reading order SHALL be determined by front-matter `weight` (ascending) when present, falling back to publication date (oldest first). Articles without an explicit weight are ordered by date relative to other unweighted articles.
+The theme SHALL provide a layout for series term pages that presents the series title and description, followed by the series' articles newest first. Ordering SHALL be determined by front-matter `weight` (descending — higher weight shown earlier) when present, falling back to publication date (newest first). Articles without an explicit weight are ordered by date relative to other unweighted articles. Each article's `description` SHALL be rendered below its title (clamped to two lines) so readers can tell what a chapter covers before opening it.
 
 #### Scenario: Series with weights
 - **WHEN** three posts share `series: ["guide"]` with weights 1, 2, 3
-- **THEN** the series page `/series/guide/` lists them in weight order 1, 2, 3
+- **THEN** the series page `/series/guide/` lists them in weight order 3, 2, 1
 
 #### Scenario: Series without weights
 - **WHEN** three posts share a series and none declares a weight
-- **THEN** the series page lists them from oldest publication date to newest
+- **THEN** the series page lists them from newest publication date to oldest
 
 #### Scenario: Series with a description
 - **WHEN** the series term has a description configured
@@ -37,15 +38,15 @@ The theme SHALL provide a layout for series term pages that presents the series 
 - **THEN** the series page and series box render without any cover image and remain fully usable
 
 ### Requirement: In-article series navigation box
-The theme SHALL render a series navigation box on article pages whose post belongs to a series. The box MUST display the series title linking to the series landing page, an ordered list of all articles in the series with the current article highlighted, and links to the previous and next article in series order.
+The theme SHALL render a series navigation box on article pages whose post belongs to a series. The box MUST display the series title linking to the series landing page, an ordered list of all articles in the series (newest first, matching the landing page) with the current article highlighted, and links to the previous and next article in the displayed order (previous = newer chapter, next = older chapter).
 
 #### Scenario: Middle part of a series
 - **WHEN** a visitor opens a post that is part 2 of a 3-part series
-- **THEN** the article page shows a series box listing all three parts, highlighting part 2, with working links to part 1 (previous) and part 3 (next)
+- **THEN** the article page shows a series box listing all three parts newest first, highlighting part 2, with working links to the newer part (previous) and the older part (next)
 
-#### Scenario: First part of a series
-- **WHEN** a visitor opens the first post of a series
-- **THEN** the series box shows no previous link and a next link to part 2
+#### Scenario: Newest part of a series
+- **WHEN** a visitor opens the newest post of a series
+- **THEN** the series box shows no previous link and a next link to the second-newest part
 
 #### Scenario: Post outside any series
 - **WHEN** a visitor opens a post without a `series` value
@@ -56,11 +57,15 @@ The theme SHALL render a series navigation box on article pages whose post belon
 - **THEN** no series box is rendered on the article page, while the series landing page still works
 
 ### Requirement: Homepage series section
-The theme SHALL provide a series section on the homepage that displays the site's series as cards (cover image when available, series title, and article count), each linking to the series landing page. The section MUST be hidden automatically when the series taxonomy is not configured or contains no terms, and its visibility MUST be configurable via `params.series.showOnHome` (default true) with `params.series.limit` (default 4) controlling the maximum number of cards.
+The theme SHALL provide a series section on the homepage that displays the site's series as cards (cover image when available, series title, the series `description` clamped to two lines, and article count), each linking to the series landing page. The section MUST be hidden automatically when the series taxonomy is not configured or contains no terms, and its visibility MUST be configurable via `params.series.showOnHome` (default true) with `params.series.limit` (default 4) controlling the maximum number of cards.
 
 #### Scenario: Site has series
 - **WHEN** the homepage is rendered and the site has at least one series
 - **THEN** a "Series" section appears between the hero and the latest-posts list, with one card per series linking to its series page, ordered by article count descending
+
+#### Scenario: Series with a description
+- **WHEN** a series term has a `description` configured
+- **THEN** its homepage card renders the description between the title and the article count, clamped to two lines
 
 #### Scenario: Series without a cover image
 - **WHEN** a series has no `image` configured
@@ -80,3 +85,4 @@ The theme SHALL provide i18n strings for all series UI labels (series box headin
 #### Scenario: Untranslated language
 - **WHEN** the site language has no series strings (e.g. `fr`)
 - **THEN** series UI labels fall back to English
+
