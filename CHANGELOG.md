@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - In-article series navigation box silently missing when the series name contains non-ASCII characters (e.g. CJK): the lookup built the series page path with `urlize`, which percent-encodes non-ASCII characters in recent Hugo versions, so `GetPage` never matched the real term page. The lookup now passes the raw series name and lets `GetPage` normalize the path
 - "Latest posts" listings (homepage, archives, widgets, section and taxonomy lists) ordered by `weight` instead of date whenever any post carries a front-matter `weight` — most visibly after v1.3.0 introduced series weights, which pushed series posts to the top of every listing. List pages now sort by date descending by default (`params.sortBy: lastmod` still switches to last-modified descending); `weight` keeps affecting only the ordering inside series
 
+### Changed
+- Series article ordering is now newest-first on the series landing page and in the in-article series box: `weight` sorts descending (higher weight shown earlier) with publication date (newest first) as the fallback for unweighted posts. The previous ascending order pushed ongoing series' latest chapters to the bottom of the list. Previous/next links follow the displayed order (previous = newer chapter)
+
 ## [1.3.0] - 2026-09-17
 
 ### Added
