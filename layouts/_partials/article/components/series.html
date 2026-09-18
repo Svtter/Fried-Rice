@@ -3,7 +3,8 @@
     Displays the optional series cover, the series title (linking to the
     series page), an ordered list of all parts with the current article
     highlighted, and prev/next links with adjacent part titles.
-    Reading order matches the series landing page: weight first, date fallback.
+    Ordering matches the series landing page: newest first (weight desc,
+    date desc fallback).
 */ -}}
 {{- $enabled := default true .Site.Params.article.series.enabled -}}
 {{- if and $enabled .Params.series -}}

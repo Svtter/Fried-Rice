@@ -152,12 +152,12 @@ Then add a `series` entry to the front matter of each post in the series:
 ---
 title: "Part 1: Getting Started"
 series: ["My Guide"]   # All posts sharing the same name form one series
-weight: 1              # Optional: reading order within the series (lower = earlier);
-                       # posts without a weight are ordered by date (oldest first)
+weight: 1              # Optional: order within the series (higher = shown earlier);
+                       # posts without a weight are ordered by date (newest first)
 ---
 ```
 
-- Each series gets a landing page at `/series/my-guide/` listing its articles in reading order.
+- Each series gets a landing page at `/series/my-guide/` listing its articles newest first.
 - Every post in a series shows a series box with the full ordered list of parts and previous/next links.
 - The homepage shows a "Series" section with one card per series (cover, title, article count), linking to each series page. It is hidden automatically when the site has no series; configure it via `params.series.showOnHome` (default true) and `params.series.limit` (default 4).
 - A series can have a description and a cover image: create `content/series/my-guide/_index.md` in your site:

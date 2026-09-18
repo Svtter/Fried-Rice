@@ -1,10 +1,10 @@
 {{ define "main" }}
     {{- /*
-        Series landing page: lists all articles of the series in reading order.
-        Reading order = front-matter `weight` (ascending) first, publication
-        date (oldest first) as fallback for unweighted articles.
+        Series landing page: lists all articles of the series, newest first.
+        Ordering = front-matter `weight` (descending) first, publication
+        date (newest first) as fallback for unweighted articles.
     */ -}}
-    {{- $ordered := sort (sort .Pages "Date" "asc") "Params.weight" "asc" -}}
+    {{- $ordered := sort (sort .Pages "Date" "desc") "Params.weight" "desc" -}}
     {{- $image := partialCached "helper/image" (dict "Image" .Params.image "Resources" .Resources "Context" .) .RelPermalink "series-cover" -}}
 
     {{- if $image -}}
