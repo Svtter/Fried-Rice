@@ -52,6 +52,17 @@
             color: var(--card-text-color-main);
         }
 
+        .series-card-description {
+            margin: 0;
+            font-size: 1.4rem;
+            line-height: 1.5;
+            color: var(--card-text-color-secondary);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
         .series-card-count {
             font-size: 1.4rem;
             color: var(--card-text-color-tertiary);
