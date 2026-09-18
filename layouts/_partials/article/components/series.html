@@ -8,7 +8,7 @@
 {{- $enabled := default true .Site.Params.article.series.enabled -}}
 {{- if and $enabled .Params.series -}}
     {{- $seriesName := index .Params.series 0 -}}
-    {{- $series := .Site.GetPage (printf "/series/%s" (urlize $seriesName)) -}}
+    {{- $series := .Site.GetPage (printf "/series/%s" $seriesName) -}}
     {{- with $series -}}
         {{- $current := $ -}}
         {{- $currentPermalink := $current.RelPermalink -}}
