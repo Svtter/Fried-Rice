@@ -1,7 +1,10 @@
 {{- $pages := .Pages -}}
+{{- $ctx := .Context -}}
 
-{{- if eq .Context.Site.Params.SortBy "lastmod" -}}
+{{- if eq $ctx.Site.Params.SortBy "lastmod" -}}
     {{- $pages = $pages.ByLastmod.Reverse -}}
+{{- else -}}
+    {{- $pages = $pages.ByDate.Reverse -}}
 {{- end -}}
 
 {{- return $pages -}}

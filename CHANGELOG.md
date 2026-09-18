@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed
+- In-article series navigation box silently missing when the series name contains non-ASCII characters (e.g. CJK): the lookup built the series page path with `urlize`, which percent-encodes non-ASCII characters in recent Hugo versions, so `GetPage` never matched the real term page. The lookup now passes the raw series name and lets `GetPage` normalize the path
+- "Latest posts" listings (homepage, archives, widgets, section and taxonomy lists) ordered by `weight` instead of date whenever any post carries a front-matter `weight` — most visibly after v1.3.0 introduced series weights, which pushed series posts to the top of every listing. List pages now sort by date descending by default (`params.sortBy: lastmod` still switches to last-modified descending); `weight` keeps affecting only the ordering inside series
+
 ## [1.3.0] - 2026-09-17
 
 ### Added
