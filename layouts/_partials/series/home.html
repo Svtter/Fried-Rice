@@ -43,6 +43,9 @@
                     {{- end -}}
                     <div class="series-card-details">
                         <h3 class="series-card-title">{{ $term.Title }}</h3>
+                        {{- with $term.Params.description -}}
+                            <p class="series-card-description">{{ . }}</p>
+                        {{- end -}}
                         <span class="series-card-count">{{ T "list.page" $count }}</span>
                     </div>
                 </a>
