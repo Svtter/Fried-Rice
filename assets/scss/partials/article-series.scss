@@ -78,6 +78,21 @@
     }
 }
 
+/* Series landing page article list: show each article's description
+   below its title so readers can tell what a chapter is about */
+.series-articles {
+    .article-description {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        margin: 0;
+        font-size: 1.4rem;
+        line-height: 1.5;
+        color: var(--card-text-color-secondary);
+    }
+}
+
 /* Series landing page cover banner */
 .series-cover {
     @include card-style;

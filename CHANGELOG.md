@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Series article ordering is now newest-first on the series landing page and in the in-article series box: `weight` sorts descending (higher weight shown earlier) with publication date (newest first) as the fallback for unweighted posts. The previous ascending order pushed ongoing series' latest chapters to the bottom of the list. Previous/next links follow the displayed order (previous = newer chapter)
 
 - Homepage series cards never rendered the series `description` from `content/series/<name>/_index.md` — the partial only output the title and article count. Cards now show the description (clamped to two lines) between the title and the count
+- Series landing pages listed chapters as title + date only, with no way to tell what an article is about before opening it. A dedicated `article-list/series-item` partial now renders the article `description` (clamped to two lines) below the title and date; articles without a description render as before
 
 ## [1.3.0] - 2026-09-17
 

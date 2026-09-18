@@ -38,9 +38,9 @@
         </div>
     </header>
 
-    <section class="article-list--compact">
+    <section class="article-list--compact series-articles">
         {{ range $ordered }}
-            {{ partial "article-list/compact" . }}
+            {{ partial "article-list/series-item" . }}
         {{ end }}
     </section>
 {{ end }}

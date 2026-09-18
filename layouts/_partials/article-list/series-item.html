@@ -1,0 +1,40 @@
+<article>
+    <a href="{{ .RelPermalink }}">
+        <div class="article-details">
+            <h2 class="article-title">
+                {{- .Title -}}
+            </h2>
+
+            {{- if not .Date.IsZero -}}
+                <footer class="article-meta">
+                    <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+                        {{- .Date | time.Format .Site.Params.dateFormat.published -}}
+                    </time>
+                </footer>
+            {{- end -}}
+
+            {{- with .Params.description -}}
+                <span class="article-description">{{ . }}</span>
+            {{- end -}}
+        </div>
+
+        {{- $image := partial "helper/image" (dict "Image" .Params.image "Resources" .Resources "Context" .) -}}
+        {{ if $image }}
+        <div class="article-image">
+            {{ partial "helper/thumbnail-image" (dict
+                "Resource" $image.Resource
+                "Width" 60
+                "Height" 60
+                "Resize" .Site.Params.ImageProcessing.Thumbnail.Enabled
+                "Attributes" (dict
+                    "src" $image.Permalink
+                    "alt" .Title
+                    "loading" "lazy"
+                    "width" $image.Width
+                    "height" $image.Height
+                )
+            ) }}
+        </div>
+        {{ end }}
+    </a>
+</article>
